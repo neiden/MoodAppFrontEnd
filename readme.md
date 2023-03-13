@@ -1,4 +1,4 @@
-#READ ME
+# READ ME
 
 
 THIS IS CODE FOR THE ABOUT US. 
@@ -6,11 +6,11 @@ INSERT ABOUT ME ON REPLIT
 https://replit.com/join/ihnliyktuo-gibsonchan
 
 
-##Project Overview:
+## Project Overview:
 	A social media website where users can post their thoughts and feelings and a Spotify playlist will be generated based on the sentiment analysis of those messages. 
 
 
-##MVP Goals:
+## MVP Goals:
 As a user, I can create/log in to an account 
 As a user, I can add friends to account 
 As a user, I can view friends’ accounts 
@@ -23,7 +23,7 @@ The program should be able to pull an existing Spotify playlist using the Spotif
 The program should be able to analyze the user’s feelings through posts using Google Sentiment API.
 
 
-##Stretch Goals: 
+## Stretch Goals: 
 Users/friends can delete posts/reactions.
 The program will generate an embedded Spotify player for each playlist created
 Users can follow friends and view their playlists 
@@ -34,7 +34,7 @@ Users can stream music together while sharing posts.
 User’s feed can be customized based on song that is playing 
 
 
-##API List
+## API List
 Spotify API  
 https://developer.spotify.com/documentation/web-api/
 Google API:
@@ -42,7 +42,7 @@ https://cloud.google.com/natural-language/docs/analyzing-sentiment
 https://developers.google.com/apps-script/samples/automations/feedback-sentiment-analysis
 https://cloud.google.com/natural-language/docs/
 
-##Database (Azure DB):
+## Database (Azure DB):
 Server=tcp:230206net-p2-server.database.windows.net,1433;Initial Catalog=TeamC;Persist Security Info=False;User ID=teamC;Password={temp};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
 Must use: Database 
@@ -63,14 +63,14 @@ ER Diagram:
 
 https://app.diagrams.net/#G1pQLoIBH1SrpqeFRC_Y6poe2gs5ZrbOay
 
-##Activity Flow
+## Activity Flow
 https://app.diagrams.net/#G1FaeeJw1iTylyTBG1vbX30S9IPLUodl-Q
 Activity flow diagrams will be done by person in charge of feature for each feature
 Unit Testing
 50% project coverage
 Unit testing will be implemented as each feature is implemented 
 
-##Coding Convention 
+## Coding Convention 
 Front End Coding Convention 
 https://github.com/cxpartners/coding-standards
 JS Coding Convention
@@ -82,11 +82,11 @@ https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding
 	
 	
  	
-##Kanban Board 
+## Kanban Board 
 Trello Kanban Board
 https://trello.com/b/pAAZI8ko/p2-mood
 
-##Git Process (merge/code review practice/branch protection)
+## Git Process (merge/code review practice/branch protection)
 Feature based branching strategy 
 Each feature will be broken down to smaller tasks 
 We will meet and review merge requests before accepting them
