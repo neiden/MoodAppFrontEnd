@@ -22,6 +22,9 @@ As a user, I can listen to my playlists by being redirected to Spotify app
 The program should be able to pull an existing Spotify playlist using the Spotify API based on the user’s mood analysis result.
 The program should be able to analyze the user’s feelings through posts using Google Sentiment API.
 
+## Design
+Figma Prototype 
+https://www.figma.com/file/kICwVagQkihXb9h4ThocfJ/MoodApp?node-id=13%3A24&t=RQuiwNTEt7EOLxZg-1
 
 ## Stretch Goals: 
 Users/friends can delete posts/reactions.
