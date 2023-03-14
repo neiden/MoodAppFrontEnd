@@ -1,0 +1,67 @@
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+.landin-bg {
+    background-image: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg);
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.name-title-col {
+    position: absolute;
+    width: 348px;
+    height: 110px;
+    left: -225px;
+    top: 155px;
+
+
+    font-family: 'Economica';
+    color: black;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 160px;
+    line-height: 184px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+
+.land-subtitle{
+    position: relative;
+    width: 688px;
+    height: 122px;
+    left: -180px;
+    top: 280px;
+
+    font-family: 'Economica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 74px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+
+    color: #000000;
+}
+
+.singup-title{
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+
+/* identical to box height, or 150% */
+
+letter-spacing: -0.015em;
+
+color: #000000;
+}
