@@ -1,0 +1,96 @@
+body, html {
+    background: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg);
+
+    background-position: center;
+    background-repeat: no-repeat;  
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+
+}
+
+#name-title-col {
+
+    font-family: 'Economica';
+    color: black;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 120px;
+
+    display: flex;
+    text-align: left;
+    letter-spacing: -0.015em;
+
+    height: 100px;
+    margin-top: 50px;
+
+}
+
+#name-subtitle{
+    font-family: 'Economica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+
+    position: relative;
+    text-align: right;
+    letter-spacing: -0.015em;
+
+    color: #000000;
+}
+
+#col-title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 30px;
+    margin-left: 40px;
+    height: 10px;
+
+    /* identical to box height, or 150% */
+
+    letter-spacing: -0.015em;
+
+    color: #000000;
+}
+
+.login-ti-enclose{
+    position: relative;
+    -ms-flex-align: center;
+    height: 95px;
+    margin-top: 50px;
+    left:90px;
+}
+
+.btn-purp{
+    width: 130px;
+    height: 40px;
+    position: relative;
+    background: #5318FB;
+    border-radius: 6px;
+    color: #FFFFFF;
+
+    margin-right: 270px; 
+}
+
+.btn-font{
+    font-family: 'Montserrat';
+    font-style: bold;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+
+.bottom-link{
+    position: relative;
+    margin-right: 190px;   
+    margin-top: 50px;
+    font-size: 15px;
+    color: #A0A0A0;
+
+}

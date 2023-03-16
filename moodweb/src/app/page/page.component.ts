@@ -7,9 +7,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent {
+
   constructor( private activatedRoute: ActivatedRoute) {} 
 
-  ngOnInit() : void{
-    
+  autheUser(){
+    console.log('authenticate user')
   }
 }

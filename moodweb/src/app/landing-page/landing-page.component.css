@@ -1,4 +1,4 @@
-body, html {
+body, html{
     background: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg);
 
     background-position: center;
@@ -16,10 +16,12 @@ body, html {
     font-style: normal;
     font-weight: 400;
     font-size: 120px;
-    line-height: 184px;
+
     display: flex;
     text-align: left;
     letter-spacing: -0.015em;
+
+    height: 100px;
 
 }
 
@@ -31,10 +33,10 @@ body, html {
     font-size: 34px;
 
     position: relative;
-    line-height: 74px;
     text-align: right;
-    margin-bottom: 20px;
     letter-spacing: -0.015em;
+
+    
 
     color: #000000;
 }
@@ -45,7 +47,10 @@ body, html {
     margin-top: 70px;
     position: relative;
     -ms-flex-align: center;
-    height: 340px;
+    height: 280px;
+    left: 80px;
+    padding-top: 10px;
+    padding-bottom: 50px;
 
 }
 
