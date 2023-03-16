@@ -5,6 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css']
 })
-export class LandingPageComponent {
 
+export class LandingPageComponent {
+  //funciton create account 
+  registerAccount(e: Event) : void {
+    console.log(e)
+  }
 }
