@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent {
+  constructor( private activatedRoute: ActivatedRoute) {} 
 
+  ngOnInit() : void{
+    
+  }
 }
