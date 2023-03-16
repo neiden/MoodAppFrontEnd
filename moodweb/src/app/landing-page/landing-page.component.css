@@ -1,19 +1,29 @@
 body, html {
-    height: 100%;
-    margin: 0;
+background: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
   }
   
 .landin-bg {
     background-image: url(https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?cs=srgb&dl=pexels-veeterzy-114979.jpg&fm=jpg);
 
-    height: 100%;
+    min-height: 100%;
+    min-width: 1024px;
 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    top: auto;
+    left: 0;
+
+    width: 100%;
+    height: auto;
 }
 
-.name-title-col {
+#name-title-col {
     position: absolute;
     width: 348px;
     height: 110px;
@@ -33,7 +43,7 @@ body, html {
     letter-spacing: -0.015em;
 }
 
-.land-subtitle{
+#land-subtitle{
     position: relative;
     width: 688px;
     height: 122px;
@@ -54,14 +64,65 @@ body, html {
 
 .singup-title{
 
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 700;
-font-size: 24px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
 
-/* identical to box height, or 150% */
+    /* identical to box height, or 150% */
 
-letter-spacing: -0.015em;
+    letter-spacing: -0.015em;
 
-color: #000000;
+    color: #000000;
+}
+
+.singup-subtitle{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 100%;
+    padding-bottom: 10px;
+
+    /* or 300% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.015em;
+
+    color: #A0A0A0;
+}
+
+.btn-font{
+    font-family: 'Montserrat';
+    font-style: bold;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 35px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+
+.btn-purp{
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    Left: 100px;
+    bottom: 30px;
+    background: #5318FB;
+    border-radius: 6px;
+    color: #FFFFFF;
+}
+
+.btn-white{
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    bottom: 30px;
+    right: 100px;
+    background: #FFFFFF;
+    border: 1px solid #5318FB;
+    border-radius: 6px;
+    color: black;
 }
