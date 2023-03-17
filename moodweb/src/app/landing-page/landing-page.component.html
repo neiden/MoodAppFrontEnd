@@ -1,5 +1,5 @@
 <body>
-  
+    <div class="landin-bg">
         <section class="vh-100">
             <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
                 <div class="row gx-lg-5 align-items-center mb-5">
@@ -7,18 +7,35 @@
                     <h1 id="name-title-col">
                       MOOD 
                     </h1>
-                    <p id="name-subtitle">
+                    <p id="land-subtitle">
                         Where words fail, music speaks
                     </p>
                   </div>
                   <!--White Column section-->
                   
                   <div class="col-lg-6 mb-5 mb-lg-0 position-relative" >
-                    <div class="login-ti-enclose">
+                    <div class="signup-ti-enclose">
                     <div class="card bg-glass">
-                      <h2 id= "col-title">Welcome Back!</h2>  
+                      <h2 id= "singup-title">Sign up</h2>  
+                        <p id= "singup-subtitle" >Or login below</p>  
                       <div class="card-body px-4 py-5 px-md-5">
                         <form> 
+                          <!-- 2 column grid layout with text inputs for the first and last names -->
+                          <div class="row">
+                            <div class="col-md-6 mb-4">
+                              <div class="form-outline">
+                                <input type="text" id="form3Example1" class="form-control" placeholder="First Name"/>
+                                <label class="form-label" for="form3Example1"></label>
+                              </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                              <div class="form-outline">
+                                <input type="text" id="form3Example2" class="form-control" placeholder="Last Name"/>
+                                <label class="form-label" for="form3Example2"></label>
+                              </div>
+                            </div>
+                          </div>
+            
                           <!-- Email input -->
                           <div class="form-outline mb-4">
                             <input type="email" id="form3Example3" class="form-control" placeholder="Email address"/>
@@ -30,17 +47,11 @@
                             <input type="password" id="form3Example4" class="form-control" placeholder="Password" />
                             <label class="form-label" for="form3Example4"></label>
                           </div>
-
-                            <button id="login" class="btn-purp" (click)="autheUser()"> 
-                                <p class="btn-font"> 
-                                    LOGIN 
-                                </p> 
-                            </button> 
-
-                            <br>
-                            <p class = "bottom-link">
-                              Don't have an account?  <a id="Register link" style="color: #5318FB; font-style: bold;" (click)="goToRegister()">Register</a>
-                            </p>
+                            <button id="Register"  class="btn-purp" (click) ="registerAccount($event)"> 
+                              <p class="btn-font">REGISTER </p> </button>
+                            <button id="login" class="btn-white" (click)="gotoLogin()"> 
+                              <p class="btn-font"> 
+                                LOGIN </p> </button> 
                         </form>
                       </div>
                         </div>
@@ -52,5 +63,8 @@
             
               
           </section>
-
+    </div>
+    
+    
+    
 </body>
