@@ -18,20 +18,20 @@
                     <div class="card bg-glass">
                       <h2 id= "col-title">Welcome Back!</h2>  
                       <div class="card-body px-4 py-5 px-md-5">
-                        <form> 
+                        <form (submit)="processForm($event)" [formGroup]="form"> 
                           <!-- Email input -->
                           <div class="form-outline mb-4">
-                            <input type="email" id="form3Example3" class="form-control" placeholder="Email address"/>
+                            <input type="text"  class = "form-control" id="form3Example3" placeholder="Username" formControlName="userInput">
                             <label class="form-label" for="form3Example3"></label>
                           </div>
             
                           <!-- Password input -->
                           <div class="form-outline mb-4">
-                            <input type="password" id="form3Example4" class="form-control" placeholder="Password" />
+                            <input type="password" class = "form-control" id="form3Example4" placeholder="Password" formControlName = "pwdInput">
                             <label class="form-label" for="form3Example4"></label>
                           </div>
 
-                            <button id="login" class="btn-purp" (click)="autheUser()"> 
+                            <button type ="submit" id ="login" class="btn-purp" value ="Login"> 
                                 <p class="btn-font"> 
                                     LOGIN 
                                 </p> 
@@ -49,7 +49,8 @@
                       
                     </div>
                   </div>
-            
+                  {{username}}
+                  {{password}}
               
           </section>
 
