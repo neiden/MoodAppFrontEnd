@@ -17,11 +17,16 @@ export class MoodAPIService {
     return this.http.post(this.apiRoot, "Sarah"); 
   }
 
-  registerUser(){
+  registerUser(value:any){
     return this.http.post(this.apiRoot, "Sarah");
   }
 
   getAllPosts() : Observable<string> {
+    return this.http.get(this.apiRoot) as Observable<string>; 
+  }
+
+
+  getAllPlaylist() : Observable<string>  {
     return this.http.get(this.apiRoot) as Observable<string>; 
   }
 

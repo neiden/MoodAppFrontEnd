@@ -6,10 +6,10 @@ import { MoodAPIService } from '../mood-api.service';
 
 @Component({
   selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class PageComponent {
+export class LoginComponent {
   //need to get http request and change file names and such
   username : string = "";
   password : string = "";
@@ -25,14 +25,10 @@ export class PageComponent {
 
   autheUser(){
     console.log('authenticate user')
-    this.getInput();
   }
 
   goToRegister(){
     this.router.navigateByUrl('/register');
-  }
-
-  getInput() : void {
   }
 
   processForm(e: Event) : void{
