@@ -11,6 +11,8 @@ export class MoodAPIService {
 
   apiRoot : string = "";
 
+  mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
+
   constructor(private http: HttpClient) { }
 
   loginUser(value: any)  {
@@ -28,6 +30,10 @@ export class MoodAPIService {
 
   getAllPlaylist() : Observable<string>  {
     return this.http.get(this.apiRoot) as Observable<string>; 
+  }
+
+  getMockAccount() : Observable<Array<string>>{
+    return this.http.get(this.mapiRoot) as Observable<Array<string>>; 
   }
 
 }

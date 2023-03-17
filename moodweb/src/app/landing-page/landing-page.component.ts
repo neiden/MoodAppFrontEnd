@@ -38,7 +38,7 @@ export class LandingPageComponent {
     this.form.markAllAsTouched();
     this.fname= this.form.controls['fNameInput'].value; 
     this.lname= this.form.controls['lNameInput'].value; 
-    this.fname= this.form.controls['emailInput'].value; 
+    this.email= this.form.controls['emailInput'].value; 
     this.password = this.form.controls['pwdInput'].value; 
     console.log(this.form.value);
     console.log(this.fname);

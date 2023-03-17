@@ -34,6 +34,9 @@ export class LoginComponent {
   processForm(e: Event) : void{
    // this.service.loginUser(this.form.value).subscribe(data => console.log(data));
     this.form.markAllAsTouched();
+
+    //mock api test
+    this.service.getMockAccount().subscribe(data => console.log(data));
     this.username = this.form.controls['userInput'].value; 
     this.password = this.form.controls['pwdInput'].value; 
     console.log(this.form.value);
