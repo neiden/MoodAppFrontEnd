@@ -15,8 +15,8 @@ export class MoodAPIService {
 
   constructor(private http: HttpClient) { }
 
-  loginUser(id : string)  {
-    let geturl = this.apiRoot + id;
+  loginUser( arr : string[])  {
+    let geturl = "https://moodapiv2.azurewebsites.net/User/Login?info=" + arr[0] + "&info=" + arr[1];
     return this.http.get(geturl) as Observable<Array<string>>;
   }
 

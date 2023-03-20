@@ -37,7 +37,11 @@ export class LoginComponent {
     //Before navigating to Home component, populate this.user_data_service.user = authenticate(loginInfo)
     //Then in Home component, the NgOnInit() can query the data service and retrieve the user object. 
     //this.router.navigateByUrl('/home');
-    this.service.loginUser("1").subscribe(data => console.log(data));
+    this.username = this.form.controls['userInput'].value; 
+    this.password = this.form.controls['pwdInput'].value; 
+    let arr : string [] = [this.username,this.password];
+    this.service.loginUser(arr).subscribe(data => console.log(data));
+
   }
 
   processForm(e: Event) : void{
