@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { SpotifyApiService } from '../spotify-api.service';
 
+
 @Component({
   selector: 'app-spotify-playlist-view',
   templateUrl: './spotify-playlist-view.component.html',
@@ -17,8 +18,11 @@ export class SpotifyPlaylistViewComponent {
     this.service.authenticate();
   }
 
+
+
   createPlaylist(){
-    this.service.createPlaylist(this.mood.value);
+    //this.service.createPlaylist(this.mood.value);
+    this.service.getToken();
   }
 
 }
