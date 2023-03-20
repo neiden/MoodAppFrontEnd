@@ -56,7 +56,7 @@ export class SpotifyApiService {
     this.getAccessToken(code);
   }
 
-  getToken() : any{
+  getToken() : string{
     var token : any;
     var url = window.location.href;
     token = url.substring(url.indexOf("#")+14, url.indexOf("&"));
@@ -118,8 +118,15 @@ export class SpotifyApiService {
   // }
 
 
-  createPlaylist(mood: string){
+  createPlaylist(mood: string, token: string ){
     console.log(mood);
+    const url = `https://api.spotify.com/v1/search?q=pop&type=track&genre=pop&limit=10&access_token=${token}`;
+    const headers = {
+                     'Content-Type': 'application/json'}
+
+    this._http.get(url, {headers: headers}).subscribe((data : any) => {
+      console.log(data.value);
+    })
     if(mood == "Happy"){
       //API call to create happy playlist
     }

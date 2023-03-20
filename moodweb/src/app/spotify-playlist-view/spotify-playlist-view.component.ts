@@ -13,6 +13,8 @@ export class SpotifyPlaylistViewComponent {
   constructor(private formBuilder: FormBuilder, private service: SpotifyApiService){}
 
   mood: FormControl = new FormControl('');
+  token: string = '';
+  
 
   authenticate(){
     this.service.authenticate();
@@ -21,8 +23,8 @@ export class SpotifyPlaylistViewComponent {
 
 
   createPlaylist(){
-    //this.service.createPlaylist(this.mood.value);
-    this.service.getToken();
+    this.token = this.service.getToken();
+    this.service.createPlaylist(this.mood.value, this.token);
   }
 
 }
