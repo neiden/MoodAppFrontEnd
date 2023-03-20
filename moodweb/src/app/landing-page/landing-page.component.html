@@ -1,5 +1,5 @@
 <body>
-    <div class="landin-bg">
+    <div>
         <section class="vh-100">
             <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
                 <div class="row gx-lg-5 align-items-center mb-5">
@@ -18,37 +18,45 @@
                     <div class="card bg-glass">
                       <h2 id= "singup-title">Sign up</h2>  
                         <p id= "singup-subtitle" >Or login below</p>  
+
                       <div class="card-body px-4 py-5 px-md-5">
-                        <form> 
+                        <!--Form to take user input in-->
+                        <form (submit)="registerAccount($event)" [formGroup]="form"> 
                           <!-- 2 column grid layout with text inputs for the first and last names -->
                           <div class="row">
+                            <!--first name-->
                             <div class="col-md-6 mb-4">
                               <div class="form-outline">
-                                <input type="text" id="form3Example1" class="form-control" placeholder="First Name"/>
+                                <input type="text" id="form3Example1" class="form-control" placeholder="First Name" formControlName = "fNameInput"/>
                                 <label class="form-label" for="form3Example1"></label>
                               </div>
                             </div>
+
+                            <!--Last name-->
                             <div class="col-md-6 mb-4">
                               <div class="form-outline">
-                                <input type="text" id="form3Example2" class="form-control" placeholder="Last Name"/>
+                                <input type="text" id="form3Example2" class="form-control" placeholder="Last Name" formControlName = "lNameInput"/>
                                 <label class="form-label" for="form3Example2"></label>
                               </div>
                             </div>
+
                           </div>
             
                           <!-- Email input -->
                           <div class="form-outline mb-4">
-                            <input type="email" id="form3Example3" class="form-control" placeholder="Email address"/>
+                            <input type="email" id="form3Example3" class="form-control" placeholder="Email address" formControlName = "emailInput"/>
                             <label class="form-label" for="form3Example3"></label>
                           </div>
             
                           <!-- Password input -->
                           <div class="form-outline mb-4">
-                            <input type="password" id="form3Example4" class="form-control" placeholder="Password" />
+                            <input type="password" id="form3Example4" class="form-control" placeholder="Password"  formControlName = "pwdInput"/>
                             <label class="form-label" for="form3Example4"></label>
                           </div>
-                            <button id="Register"  class="btn-purp" (click) ="registerAccount($event)"> 
+
+                            <button id="Register"  class="btn-purp" type="submit" value ="Register"> 
                               <p class="btn-font">REGISTER </p> </button>
+
                             <button id="login" class="btn-white" (click)="gotoLogin()"> 
                               <p class="btn-font"> 
                                 LOGIN </p> </button> 

@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageComponent } from './page/page.component';
+import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 
 
 const routes: Routes = [
   {
     path: 'login', 
-    component: PageComponent
+    component: LoginComponent
   },
   {
     path: 'register', 
     component: LandingPageComponent
+  },
+  {
+    path: 'home',
+    //Change to actual home component when its done
+    component: SpotifyPlaylistViewComponent
   }
 
 ];

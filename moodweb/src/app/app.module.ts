@@ -8,18 +8,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PageComponent } from './page/page.component';
+import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LoginComponent } from './account/login.component';
+import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavbarComponent,
-    PageComponent,
+    LoginComponent,
     LandingPageComponent,
-    LoginComponent
+    SpotifyPlaylistViewComponent
   ],
   imports: [
     BrowserModule,

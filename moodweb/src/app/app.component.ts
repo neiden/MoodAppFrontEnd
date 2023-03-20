@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -17,7 +18,10 @@ export class AppComponent {
   //class functions
 
   ngOnInit() : void {
-    this.router.navigateByUrl('register');
+    //Commented out for now due to this command refreshing the link everytime the project is accessed
+    // this was causing an issue with the code given from Spotify Authenticate getting overriden in the refresh
+    // There's probably another way to set a starting route that doesn't refresh the urls
+    //this.router.navigateByUrl('register');
   }
 
 }
