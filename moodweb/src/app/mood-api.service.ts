@@ -9,14 +9,15 @@ import { Observable, firstValueFrom } from 'rxjs';
 export class MoodAPIService {
   
 
-  apiRoot : string = "";
+  apiRoot : string = "https://moodapiv2.azurewebsites.net/User/GetAccount?User_Id=";
 
   mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
 
   constructor(private http: HttpClient) { }
 
-  loginUser(value: any)  {
-    return this.http.post(this.apiRoot, "Sarah"); 
+  loginUser(id : string)  {
+    let geturl = this.apiRoot + id;
+    return this.http.get(geturl) as Observable<Array<string>>;
   }
 
   registerUser(value:any){
@@ -34,6 +35,7 @@ export class MoodAPIService {
 
   getMockAccount() : Observable<Array<string>>{
     return this.http.get(this.mapiRoot) as Observable<Array<string>>; 
+    
   }
 
 }
