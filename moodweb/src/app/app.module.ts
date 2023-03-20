@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     FooterComponent,
     NavbarComponent,
     LoginComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SpotifyPlaylistViewComponent
   ],
   imports: [
     BrowserModule,
