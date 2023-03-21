@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { FormBuilder, FormControl, Validators, FormGroup, FormArray} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
+import { Account } from 'src/models/account';
 
 @Component({
   selector: 'app-page',
@@ -13,7 +14,7 @@ export class LoginComponent {
   //need to get http request and change file names and such
   username : string = "";
   password : string = "";
-
+  acc? : Account = undefined;
 
   constructor(private router:Router, private fBuilder : FormBuilder, private service : MoodAPIService) {} 
 
@@ -40,7 +41,19 @@ export class LoginComponent {
     this.username = this.form.controls['userInput'].value; 
     this.password = this.form.controls['pwdInput'].value; 
     let arr : string [] = [this.username,this.password];
-    this.service.loginUser(arr).subscribe(data => console.log(data));
+    //To Do: account cache 
+    // for now navigate to home page
+    this.form.markAllAsTouched();
+    this.service.loginUser(arr).subscribe(data => {
+      console.log(data);
+      this.acc = data;
+      console.log(this.acc.f_Name);
+      if(this.acc.f_Name){
+        this.router.navigateByUrl('/home');
+      }
+    });
+    
+
 
   }
 

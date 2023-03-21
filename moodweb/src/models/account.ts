@@ -7,6 +7,7 @@ export interface Account{
     birthdate: Date | string
     phoneNumber : string, 
     zipcode : string, 
+    f_Name : string;
     
     /*
         acc.Firstname = info[0];

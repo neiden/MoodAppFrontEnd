@@ -38,8 +38,13 @@ export class LandingPageComponent {
 
   //funciton create account 
   registerAccount(e: Event) : void {
-    this.service.registerUser(this.form.value).subscribe(data => console.log(data));
     this.form.markAllAsTouched();
+    this.service.registerUser(this.form.value).subscribe(data => {
+      console.log(data)
+      if(data.toString() == "true"){
+          //go to feed
+      }  
+    });
    // this.fname= this.form.controls['fNameInput'].value; 
    // this.lname= this.form.controls['lNameInput'].value; 
    // this.email= this.form.controls['emailInput'].value; 

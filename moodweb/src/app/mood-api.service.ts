@@ -18,7 +18,7 @@ export class MoodAPIService {
 
   loginUser(arr : string[])  {
     let geturl = "https://moodapiv2.azurewebsites.net/User/Login?info=" + arr[0] + "&info=" + arr[1];
-    return this.http.get(geturl) as Observable<Array<string>>;
+    return this.http.get(geturl) as Observable<Account>;
   }
 
   registerUser(acc : Account){
