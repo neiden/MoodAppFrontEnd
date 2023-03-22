@@ -11,18 +11,6 @@ import { Post } from 'src/models/post';
 
 export class MoodAPIService {
 
-  createPost(postData: any): Observable<any> {
-    const post: Post = {
-      post_id: postData.post_id,
-      u_id: postData.u_id,
-      likes: postData.likes,
-      content: postData.content,
-      post_date: postData.post_date
-    };
-    const url = `${this.apiRoot}/create_post`;
-    return this.http.post<Post>(url, post);
-  }
-
   apiRoot : string = "https://moodapiv2.azurewebsites.net/User/GetAccount?User_Id=";
 
   mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
@@ -41,6 +29,19 @@ export class MoodAPIService {
     //https://moodapiv2.azurewebsites.net/User/Users?info=Daphne&info=Blake&info=DaccoutBlake1&info=jeepers%40scooby.com&info=369852%21S&info=54652
     let posturl = "https://moodapiv2.azurewebsites.net/User/Users?info=" + acc.firstname + "&info=" + acc.lastname + "&info=" + acc.username + "&info=" + acc.email + "&info=" + acc.password + "&info=" + acc.zipcode;
     return this.http.post(posturl, acc);
+  }
+
+  createPost(postData: any): Observable<any> {
+    const post: Post = {
+      post_id: postData.post_id,
+      u_id: postData.u_id,
+      likes: postData.likes,
+      content: postData.content,
+      post_date: postData.post_date
+    };
+    
+    let posturl = "https://moodapiv2.azurewebsites.net/create_post";
+    return this.http.post<Post>(posturl, post);
   }
 
   getAllPosts() : Observable<string> {
