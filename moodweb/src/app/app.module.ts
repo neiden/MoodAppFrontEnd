@@ -14,6 +14,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ViewPostsComponent } from './view-posts/view-posts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     LandingPageComponent,
     SpotifyPlaylistViewComponent,
     FeedComponent,
-    ProfileComponent
+    ProfileComponent,
+    ViewPostsComponent,
   ],
   imports: [
     BrowserModule,
