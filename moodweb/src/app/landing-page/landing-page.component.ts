@@ -23,10 +23,14 @@ export class LandingPageComponent {
 
   //form group that will hold form controls from html input 
   form : FormGroup = this.fBuilder.group({
-    fNameInput : new FormControl(''),
-    lNameInput : new FormControl(''),
-    emailInput : new FormControl(''),
-    pwdInput : new FormControl('')
+    firstname : new FormControl(''),
+    lastname : new FormControl(''),
+    username : new FormControl(''),
+    email : new FormControl(''),
+    password: new FormControl(''),
+    birthdate : new FormControl(''),
+    phoneNumber : new FormControl(''),
+    zipcode : new FormControl('')
   })
 
   //authenticate input? 
@@ -34,17 +38,22 @@ export class LandingPageComponent {
 
   //funciton create account 
   registerAccount(e: Event) : void {
-    //this.service.registerUser(this.form.value).subscribe(data => console.log(data));
     this.form.markAllAsTouched();
-    this.fname= this.form.controls['fNameInput'].value; 
-    this.lname= this.form.controls['lNameInput'].value; 
-    this.email= this.form.controls['emailInput'].value; 
-    this.password = this.form.controls['pwdInput'].value; 
-    console.log(this.form.value);
-    console.log(this.fname);
-    console.log(this.lname);
-    console.log(this.email);
-    console.log(this.password);
+    this.service.registerUser(this.form.value).subscribe(data => {
+      console.log(data)
+      if(data.toString() == "true"){
+          //go to feed
+      }  
+    });
+   // this.fname= this.form.controls['fNameInput'].value; 
+   // this.lname= this.form.controls['lNameInput'].value; 
+   // this.email= this.form.controls['emailInput'].value; 
+   // this.password = this.form.controls['pwdInput'].value; 
+    //console.log(this.form.value);
+    //console.log(this.fname);
+    //console.log(this.lname);
+    //console.log(this.email);
+    //console.log(this.password);
   }
 
 
