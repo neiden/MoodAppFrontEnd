@@ -52,9 +52,6 @@ export class LoginComponent {
         this.router.navigateByUrl('/home');
       }
     });
-    
-
-
   }
 
   processForm(e: Event) : void{

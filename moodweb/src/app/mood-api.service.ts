@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Account } from 'src/models/account';
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class MoodAPIService {
-  
 
   apiRoot : string = "https://moodapiv2.azurewebsites.net/User/GetAccount?User_Id=";
 
@@ -29,6 +29,22 @@ export class MoodAPIService {
     let posturl = "https://moodapiv2.azurewebsites.net/User/Users?info=" + acc.firstname + "&info=" + acc.lastname + "&info=" + acc.username + "&info=" + acc.email + "&info=" + acc.password + "&info=" + acc.zipcode;
     return this.http.post(posturl, acc);
   }
+
+  createPost(content:string, likes: any)
+  {
+    //return this.http.post<any>(`http://localhost:4200/post`,
+   try {
+     return this.http.post<any>(`${this.apiRoot}/post`,
+     {
+       "content":content,
+       "likes": Number
+     })
+   } finally {
+     this.getAllPosts();
+   }
+
+  }
+
 
   getAllPosts() : Observable<string> {
     return this.http.get(this.apiRoot) as Observable<string>; 

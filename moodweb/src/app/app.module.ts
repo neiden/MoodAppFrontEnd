@@ -13,6 +13,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -23,17 +24,21 @@ import { ProfileComponent } from './profile/profile.component';
     LandingPageComponent,
     SpotifyPlaylistViewComponent,
     FeedComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreatePostComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
