@@ -1,1 +1,35 @@
-<p>feed works!</p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<section ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="ng-scope container ng-fadeInLeftShort" style=""><!-- uiView:  --><div ui-view="" class="ng-fadeInLeftShort ng-scope">
+</div>
+<div class="container-lg ng-scope">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+         <div class="card-body">
+          <form action="" class="mt ng-pristine ng-valid">
+            <div class="input-group mda-input-group">
+              <div class="mda-form-group">
+                <div class="mda-form-control">
+                  <textarea rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="no-resize form-control"></textarea>
+                  <div class="mda-form-control-line"></div>
+                  <label class="m0">What's on your mind?</label>
+                </div><span class="mda-form-msg right">Any message here</span>
+              </div>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-success"  style="margin-top:-44px">
+                    Save
+                </button> 
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="card-body">
+        <app-view-posts *ngFor="let post of postList; index as i" [postData]="post"></app-view-posts>
+          <!-- Inner card-->
+        </div>
+        <!-- Add another post here!!-->
+      </div>
+    </div>
+  </div>
+</div> 
+</section>
