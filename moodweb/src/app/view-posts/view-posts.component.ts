@@ -10,6 +10,8 @@ import { PostData } from '../feed/feed.component';
 export class ViewPostsComponent implements OnInit{
   @Input()
   postData!: PostData;
+
+  
   userPosts : any[] = [];
 
   ngOnInit(): void {
