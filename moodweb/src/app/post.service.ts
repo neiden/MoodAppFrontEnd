@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class PostService {
 
-  public url = 'https://localhost:4200/api/Posts';
+  private url = 'https://localhost:4200/api/Posts';
   constructor(private http: HttpClient) { }
 
   public getAllPosts() {
