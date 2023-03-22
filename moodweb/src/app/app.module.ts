@@ -14,6 +14,7 @@ import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-pl
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     SpotifyPlaylistViewComponent,
     FeedComponent,
     ProfileComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

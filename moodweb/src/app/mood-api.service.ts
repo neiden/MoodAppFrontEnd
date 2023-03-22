@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Account } from 'src/models/account';
+import { Post } from 'src/models/post';
 
 
 @Injectable({
@@ -9,6 +10,18 @@ import { Account } from 'src/models/account';
 })
 
 export class MoodAPIService {
+
+  createPost(postData: any): Observable<any> {
+    const post: Post = {
+      post_id: postData.post_id,
+      u_id: postData.u_id,
+      likes: postData.likes,
+      content: postData.content,
+      post_date: postData.post_date
+    };
+    const url = `${this.apiRoot}/create_post`;
+    return this.http.post<Post>(url, post);
+  }
 
   apiRoot : string = "https://moodapiv2.azurewebsites.net/User/GetAccount?User_Id=";
 
