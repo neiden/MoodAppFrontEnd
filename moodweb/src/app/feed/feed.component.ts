@@ -13,14 +13,13 @@ import { ViewPostsComponent } from '../view-posts/view-posts.component';
 export class FeedComponent {
   
   constructor(private router:Router, private service: MoodAPIService) {}
-  
+ 
   post1: PostData = {
     name: "John Swanberg",
     id: 2,
     imgSrc: "https://bootdey.com/img/Content/avatar/avatar6.png",
     content: "Today was a great today woweee",
     date: "3/20 11:32AM"
-
   }
 
   post2: PostData = {
@@ -30,7 +29,7 @@ export class FeedComponent {
     content: "I love music and I'm a little deranged :)",
     date: "3/21 8:14PM"
   }
-
+  
   post3: PostData = {
     name: "Arya Stark",
     id: 4,
