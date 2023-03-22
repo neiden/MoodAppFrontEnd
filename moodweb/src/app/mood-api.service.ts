@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Account } from 'src/models/account';
 
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class MoodAPIService {
-  
 
   apiRoot : string = "https://moodapiv2.azurewebsites.net/User/GetAccount?User_Id=";
 
