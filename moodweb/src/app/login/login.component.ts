@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { FormBuilder, FormControl, Validators, FormGroup, FormArray} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
-import { Account } from 'src/models/account';
+import { Account, User } from 'src/models/account';
 
 @Component({
   selector: 'app-page',
@@ -15,6 +15,8 @@ export class LoginComponent {
   username : string = "";
   password : string = "";
   acc? : Account = undefined;
+  user? : User = undefined;
+
 
   constructor(private router:Router, private fBuilder : FormBuilder, private service : MoodAPIService) {} 
 
@@ -44,16 +46,16 @@ export class LoginComponent {
     //To Do: account cache 
     // for now navigate to home page
     this.form.markAllAsTouched();
-    this.service.loginUser(arr).subscribe(data => {
+    this.service.loginUser(this.username,this.password).subscribe(data => {
       console.log(data);
-      this.acc = data;
-      console.log(this.acc.f_Name);
-      if(this.acc.f_Name){
-        this.router.navigateByUrl('/home');
+      //this.acc = data;
+      this.user = data;
+      if(this.user.user_Id){
+        console.log(this.user.user_Id);
+        this.router.navigate(['profile', "${this.user.user_Id}"]);
       }
     });
     
-
 
   }
 
