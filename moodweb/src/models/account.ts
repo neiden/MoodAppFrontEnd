@@ -21,3 +21,12 @@ export interface Account{
         //acc.Zipcode = info[6];
     */
 }
+
+export interface User{
+    user_Id : any, 
+    f_Name: string,
+    l_Name : string,
+    phone_Number : string, 
+    zipcode : string,
+    birthdate: Date | string, 
+}

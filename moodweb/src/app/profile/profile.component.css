@@ -332,6 +332,12 @@ body{
     border-top: 1px solid rgba(162, 162, 162, .12)
 }
 
+.card .card-footer button{
+    margin-right: 12px;
+    background-color: #5318FB;
+    border-color: #5318FB;
+}
+
 .card .card-item {
     position: relative;
     display: block;

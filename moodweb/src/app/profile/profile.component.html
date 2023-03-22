@@ -10,15 +10,15 @@
                             <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
                                 <ul>
                                     <li>
-                                        <div class="counter">246</div>
+                                        <div class="counter">{{friendsNum}}</div>
                                         <div class="heading">Friends</div>
                                     </li>
                                     <li>
-                                        <div class="counter">30</div>
+                                        <div class="counter">{{postNum}}</div>
                                         <div class="heading">Posts</div>
                                     </li>
                                     <li>
-                                        <div class="counter">216</div>
+                                        <div class="counter">{{playlistNum}}</div>
                                         <div class="heading">Playlists</div>
                                     </li>
                                 </ul>
@@ -30,8 +30,8 @@
                                 </div>
                                 <div class="infos">
                                     <!--Populate this with user info-->
-                                    <h2>David Green</h2>
-                                    <div class="location">Las Vegas, Nevada, U.S.</div>
+                                    <h2>{{name}}</h2>
+                                    <div class="location">{{location}}</div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center">
@@ -42,9 +42,9 @@
                                             <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">
                                                 <i class="la la-ellipsis-h"></i>
                                             </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start" style="display: none; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
+                                            <div class="dropdown-menu" x-placement="bottom-start" style="display:blocl; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);">
                                                 <a href="#" class="dropdown-item">
-                                                Reportasdfghjkl;
+                                                Report
                                                 </a>
                                                 <a href="#" class="dropdown-item">
                                                 Block
@@ -77,7 +77,7 @@
 <div class="container-lg ng-scope">
   <div class="row">
 
-    <!--Playlist container-->
+    <!--Mood container-->
     <div class="col-md-4">
         <div class="push-down"></div>
         <div class="card card-transparent">
@@ -110,8 +110,8 @@
               </div>
 
               <span class="input-group-btn">
-                <button type="button" class="btn btn-success"  style="margin-top:0px; margin-left: 10px;">
-                    Save
+                <button type="button" class="btn btn-success"  style="margin-top:0px; margin-left: 10px; background-color: #5318FB; border-color: #5318FB;">
+                    Post
                 </button>
               </span>
 
@@ -137,7 +137,6 @@
             </div>
             <div class="card-footer">
               <button type="button" class="btn btn-flat btn-primary">Like</button>
-              <button type="button" class="btn btn-flat btn-primary">Share</button>
               <button type="button" class="btn btn-flat btn-primary">Comment</button>
             </div>
           </div>

@@ -24,7 +24,7 @@ const routes: Routes = [
     component: SpotifyPlaylistViewComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:user',
     component: ProfileComponent
   }
 
