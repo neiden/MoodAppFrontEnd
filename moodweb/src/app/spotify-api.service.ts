@@ -26,17 +26,17 @@ export class SpotifyApiService {
   }
 
 
-  getCode() : any{
-    var code : any;
-    const queryString = window.location.search;
-    console.log(queryString);
-    if(queryString.length > 0){
-      const urlParams = new URLSearchParams(queryString);
-      code = urlParams.get('code')
-    }
-    console.log("THIS IS THE CODE IN THE URL " + code);
-    this.getAccessToken(code);
-  }
+  // getCode() : any{
+  //   var code : any;
+  //   const queryString = window.location.search;
+  //   console.log(queryString);
+  //   if(queryString.length > 0){
+  //     const urlParams = new URLSearchParams(queryString);
+  //     code = urlParams.get('code')
+  //   }
+  //   console.log("THIS IS THE CODE IN THE URL " + code);
+  //   this.getAccessToken(code);
+  // }
 
   getToken() : string{
     var token : any;
@@ -51,21 +51,6 @@ export class SpotifyApiService {
   //MGM4OTg1MDQ2YmMwNDgzZWJjNGI2MTkyZmZmYTY0OGQ6YmMzMDE5YWEyMjRkNDlkY2FkMDAxYjlmZDA3NGQ4ODY=
 
   getAccessToken(code: string){
-    // this._http.post("https://accounts.spotify.com/api/token", {
-    //   form: {
-    //     code: code, 
-    //     redirect_uri: this.redirectURI,
-    //     grant_type: 'authorization_code'
-    // },
-    //  headers: {
-    //   'Authorization': 'Basic MGM4OTg1MDQ2YmMwNDgzZWJjNGI2MTkyZmZmYTY0OGQ6YmMzMDE5YWEyMjRkNDlkY2FkMDAxYjlmZDA3NGQ4ODY='
-    // },
-    // json: true
-    
-    // }).subscribe((data: any) => {
-    //   console.log(data.value);
-    // })
-
 
     const url = "https://accounts.spotify.com/api/token";
     const headers = new HttpHeaders()
@@ -82,9 +67,18 @@ export class SpotifyApiService {
   }
 
 
-  getTracks(mood: string, token: string ): Observable<any>{
-    console.log(mood);
-    const url = `https://api.spotify.com/v1/search?q=genre:${mood}&type=track&genre=${mood}&limit=10&access_token=${token}`;
+  getTracks(score: number, token: string ): Observable<any>{
+    var genre: string = "";
+    if (score >= .6){
+      genre = "rap";
+    }
+    else if(score < 0){
+      genre = "blues";
+    }
+    else{
+      genre = "Cool Jazz";
+    }
+    const url = `https://api.spotify.com/v1/search?q=genre:${genre}&type=track&genre=${genre}&limit=10&access_token=${token}`;
     const headers = {
                      'Content-Type': 'application/json'}
 
