@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
 import { SpotifyApiService } from '../spotify-api.service';
 import { Account, User, Post } from 'src/models/account';
-import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
+// import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit{
     user? : User = undefined;
     acc? : Account = undefined;
     id : any;
-    geo ? : MapGeocoderResponse = undefined;
+    // geo ? : MapGeocoderResponse = undefined;
     constructor(private router:Router, private m_service : MoodAPIService, private s_service : SpotifyApiService, private activatedRoute: ActivatedRoute){}
 
     ngOnInit(){
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit{
         this.name = this.acc.firstname + " " + this.acc.lastname;
         //this gets location by zipcode
         
-        this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
+        // this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
       });
 
     }
@@ -96,13 +96,13 @@ export class ProfileComponent implements OnInit{
       })
     }
 
-    getLoc(zipcode : string) : any{
-     // return this.m_service.getLocation(zipcode).subscribe(data => console.log(data));'
-     this.m_service.getLocation(zipcode).subscribe( data2 => {
-      this.geo = data2;
-      this.location = this.geo.results[0].formatted_address;
-      })
-    }
+    // getLoc(zipcode : string) : any{
+    //  // return this.m_service.getLocation(zipcode).subscribe(data => console.log(data));'
+    //  this.m_service.getLocation(zipcode).subscribe( data2 => {
+    //   this.geo = data2;
+    //   this.location = this.geo.results[0].formatted_address;
+    //   })
+    // }
 
     //when user clicks edit profile
     editProfile(){

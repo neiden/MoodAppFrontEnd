@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MapGeocoder} from '@angular/google-maps';
+// import {MapGeocoder} from '@angular/google-maps';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Account, User, Post} from 'src/models/account';
-import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
+// import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,8 @@ import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 export class MoodAPIService {
   
-  googlemapapiurl : string = "https://maps.googleapis.com/maps/api/geocode/json?address="
-  googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
+  // googlemapapiurl : string = "https://maps.googleapis.com/maps/api/geocode/json?address="
+  // googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
   mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
 
   apiRoot : string = "https://moodapiv2.azurewebsites.net";
@@ -63,9 +63,9 @@ export class MoodAPIService {
     
   }
 
-  getLocation(zipcode : string) : Observable<MapGeocoderResponse> {
-    let geoapi = this.googlemapapiurl + zipcode + this.googleApiKeyMap;
-    return this.http.get(geoapi) as Observable<MapGeocoderResponse>
-  }
+  // getLocation(zipcode : string) : Observable<MapGeocoderResponse> {
+  //   let geoapi = this.googlemapapiurl + zipcode + this.googleApiKeyMap;
+  //   return this.http.get(geoapi) as Observable<MapGeocoderResponse>
+  // }
 
 }
