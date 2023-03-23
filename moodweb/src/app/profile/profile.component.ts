@@ -45,14 +45,14 @@ export class ProfileComponent implements OnInit{
           // this.m_service.loginUser(params['user'],params['pwd']).subscribe(data => {
           //   console.log(data);
           // })
-        this.getUserInfo();
+        this.getAccountInfo();
         this.getPosts();
         this.getPlaylist();
           
         })
     }
 
-    getUserInfo(){
+    getAccountInfo(){
       //request to get name or passed from login? 
       this.m_service.getAccount(10).subscribe(data => {
         console.log(data);
@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit{
         //this gets location by zipcode
         
         this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
+        this.id = this.acc.username;
       });
 
     }
@@ -106,6 +107,6 @@ export class ProfileComponent implements OnInit{
 
     //when user clicks edit profile
     editProfile(){
-      this.router.navigateByUrl('');
+      this.router.navigateByUrl('profilesettings/${this.id}');
     }
 }

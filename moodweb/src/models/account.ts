@@ -31,10 +31,28 @@ export interface User{
 }
 
 export interface Post{
-
     content: string, 
     postId : any, 
     likes : any, 
     postDate : Date | string, 
     userID : any
+}
+
+export interface Playlist{
+    playId : any; 
+    userId: any; 
+    name: string, 
+    spotifyLink : string
+}
+
+export interface Acc{
+    username : string, 
+    password : string, 
+    email : string, 
+    user_Id : any, 
+    firstname : string, 
+    lastname : string, 
+    phoneNumber : string, 
+    zipcode : string, 
+    birthdate : Date | string
 }

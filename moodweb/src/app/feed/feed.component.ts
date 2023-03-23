@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { MoodAPIService } from '../mood-api.service';
 import { ViewPostsComponent } from '../view-posts/view-posts.component';
+import { Post } from 'src/models/account';
 
 @Component({
   selector: 'app-feed',

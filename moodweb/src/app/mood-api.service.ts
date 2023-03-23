@@ -14,7 +14,7 @@ export class MoodAPIService {
   googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
   mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
 
-  apiRoot : string = "https://moodapiv2.azurewebsites.net";
+  apiRoot : string = "https://moodapiapp.azurewebsites.net";
 
 
   constructor(private http: HttpClient) { }
