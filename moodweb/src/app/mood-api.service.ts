@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
-import { Account, User, Post, Playlist} from 'src/models/account';
+import { Account, User, Post, Playlist, Comment} from 'src/models/account';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Injectable({
@@ -106,6 +106,22 @@ export class MoodAPIService {
   getLocation(zipcode : string) : Observable<MapGeocoderResponse> {
     let geoapi = this.googlemapapiurl + zipcode + this.googleApiKeyMap;
     return this.http.get(geoapi) as Observable<MapGeocoderResponse>
+  }
+
+  createComment(comment: Comment) : Observable<Comment> {
+    const url = this.apiRoot + "/Comment/Comments";
+    const body = {
+      "content" : comment.content,
+      "commentId": 0,
+      "postId": comment.postId,
+      "likes": comment.likes,
+      "commentDate": new Date()
+    }
+    const headers = {
+      'Content-Type' : 'application/json', 'accept' : 'text/plain'
+    };
+
+    return this.http.post(url, body, {headers: headers}) as Observable<Comment>;
   }
 
   createPlaylist(playlist: Playlist) : Observable<any> {

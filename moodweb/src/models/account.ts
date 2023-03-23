@@ -39,6 +39,23 @@ export interface Post{
     userID : any
 }
 
+export interface Comment{
+    content: string,
+    commentId: number,
+    postId: number,
+    likes: number,
+    commentDate: string
+}
+
+export interface CommentData{
+    name: string,
+    content: string,
+    commentId: number,
+    postId: number,
+    likes: number,
+    commentDate: string
+}
+
 export interface Playlist{
     playlist_id: number,
     user_id: number,
