@@ -118,7 +118,11 @@ export class ProfileSettingComponent implements OnInit {
         }
       })
 
-        this.m_service.updateUser(newAcc).subscribe(data => console.log(data));
+        this.m_service.updateUser(newAcc).subscribe(data => {
+          console.log(data)
+          //state changes were saved 
+          //go to profile
+        });
       }
 
      
