@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit{
         this.getAccountInfo();
         this.getPosts();
         this.getPlaylist();
+        this.getFriends();
           
         })
     }
@@ -62,7 +63,15 @@ export class ProfileComponent implements OnInit{
         //this gets location by zipcode
         
         this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
-        this.id = this.acc.username;
+        this.id = this.acc.user_Id;
+
+        this.m_service.getAllFriends(this.id).subscribe(data => {
+          this.friends = data;
+          console.log(data);
+          console.log(this.friends);
+          this.friendsNum = this.friends.length;
+        })
+        
       });
 
     }
@@ -79,12 +88,8 @@ export class ProfileComponent implements OnInit{
 
     getFriends(){
       //get all user posts
-      this.m_service.getAllFriends(1).subscribe(data => {
-        this.friends = data;
-        console.log(data);
-        console.log(this.friends);
-        this.friendsNum = this.friends.length;
-      })
+      console.log(this.acc?.user_Id)
+      
     }
 
     getPlaylist(){

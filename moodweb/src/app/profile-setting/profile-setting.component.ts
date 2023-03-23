@@ -25,6 +25,7 @@ export class ProfileSettingComponent implements OnInit {
   zip : any;
   city : any;
   geo ? : MapGeocoderResponse = undefined;
+  u_Id : any;
   
 
   constructor(private router:Router, private m_service : MoodAPIService, private activatedRoute: ActivatedRoute, private fBuilder:FormBuilder){}
@@ -42,7 +43,9 @@ export class ProfileSettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.m_service.getAccount(10).subscribe(data => {
+      console.log(data);
       this.acc = data; 
+      console.log(this.acc)
       this.firstn = this.acc.firstname;
       this.lastn = this.acc.lastname;
       this.username = this.acc.username;
@@ -52,6 +55,7 @@ export class ProfileSettingComponent implements OnInit {
       this.phonen = this.acc.phoneNumber;
       this.zip = this.acc.zipcode;
       this.city = this.getLoc(this.zip);
+      this.u_Id = this.acc.user_Id;
     })
   }
 
@@ -69,11 +73,11 @@ export class ProfileSettingComponent implements OnInit {
         }
       })
 
-      for (const field in this.form.controls) { // 'field' is a string
+      //test get all users
+      this.m_service.getAllUsers().subscribe(data => console.log(data))
 
-        const control = this.form.get(field); // 'control' is a FormControl  
-      
-      }
+      //test get friends of user
+      this.m_service.getAllFriends(this.acc?.user_Id).subscribe(data => console.log(data));
   }
 
   getLoc(zipcode : string) : any{

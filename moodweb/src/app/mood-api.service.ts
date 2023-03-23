@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
-import { Account, User, Post} from 'src/models/account';
+import { Account, User, Post, Acc} from 'src/models/account';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Injectable({
@@ -38,7 +38,12 @@ export class MoodAPIService {
   }
 
   getAllUsers() : Observable<Array<User>>{
-    return this.http.get(this.apiRoot) as Observable<Array<User>>;
+    let url = this.apiRoot + "/User/AllUsers";
+    return this.http.get(url) as Observable<Array<User>>;
+  }
+
+  updateUsers( acc : Acc) : void{
+
   }
 
   getAllPosts( id : any) : Observable<Array<Post>> {
@@ -54,8 +59,8 @@ export class MoodAPIService {
   }
 
   getAllFriends( id : any) : Observable<Array<string>>{
-    
-    return this.http.get(this.apiRoot) as Observable<Array<string>>; 
+    let url = this.apiRoot + "/Friend/Friends?uId=" + id;
+    return this.http.get(url) as Observable<Array<string>>; 
   }
 
   getMockAccount() : Observable<Array<any>>{
