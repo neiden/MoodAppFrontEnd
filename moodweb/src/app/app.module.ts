@@ -15,12 +15,9 @@ import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-pl
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ViewPostsComponent } from './view-posts/view-posts.component';
-<<<<<<< HEAD
 import { CommentComponent } from './comment/comment.component';
-=======
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { FriendsComponent } from './friends/friends.component';
->>>>>>> 5a75fa8892b30d4f2900c7e309f174b2561a3f28
 
 @NgModule({
   declarations: [
@@ -33,12 +30,9 @@ import { FriendsComponent } from './friends/friends.component';
     FeedComponent,
     ProfileComponent,
     ViewPostsComponent,
-<<<<<<< HEAD
     CommentComponent,
-=======
     ProfileSettingComponent,
     FriendsComponent,
->>>>>>> 5a75fa8892b30d4f2900c7e309f174b2561a3f28
   ],
   imports: [
     BrowserModule,
