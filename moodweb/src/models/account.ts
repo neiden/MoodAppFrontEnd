@@ -40,10 +40,10 @@ export interface Post{
 }
 
 export interface Playlist{
-    playlistId : any; 
-    userId: any; 
-    name: string, 
-    spotifyLink : string
+    playlist_id: number,
+    user_id: number,
+    name: string,
+    link: string
 }
 
 export interface Acc{
@@ -55,5 +55,5 @@ export interface Acc{
     lastname : string, 
     phoneNumber : string, 
     zipcode : string, 
-    birthdate : Date | string 
+    birthdate : Date | string     
 }
