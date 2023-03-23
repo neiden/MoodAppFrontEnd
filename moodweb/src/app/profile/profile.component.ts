@@ -107,6 +107,6 @@ export class ProfileComponent implements OnInit{
 
     //when user clicks edit profile
     editProfile(){
-      this.router.navigateByUrl('profilesettings/${this.id}');
+      this.router.navigateByUrl('profilesettings/${10}');
     }
 }

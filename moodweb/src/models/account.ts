@@ -54,5 +54,5 @@ export interface Acc{
     lastname : string, 
     phoneNumber : string, 
     zipcode : string, 
-    birthdate : Date | string
+    birthdate : Date | string 
 }

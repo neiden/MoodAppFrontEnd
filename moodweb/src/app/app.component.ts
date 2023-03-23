@@ -22,7 +22,8 @@ export class AppComponent {
     // this was causing an issue with the code given from Spotify Authenticate getting overriden in the refresh
     // There's probably another way to set a starting route that doesn't refresh the urls
     //this.router.navigateByUrl('register');
-    this.router.navigateByUrl('login');
+    //this.router.navigateByUrl('login');
+    this.router.navigateByUrl('profilesettings/${10}');
   }
 
 }
