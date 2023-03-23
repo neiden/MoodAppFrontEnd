@@ -52,9 +52,8 @@ export class LoginComponent {
       this.user = data;
       if(this.user.user_Id){
         console.log(this.user.user_Id);
-        //this.router.navigateByUrl('home');
-        //this.router.navigateByUrl('profile/this.user.user_Id')
-        this.router.navigate(['/profile', this.user.user_Id]);
+        this.router.navigate(['/home', this.user.user_Id]);
+        //this.router.navigate(['/profile', this.user.user_Id]);
       }
     });
     

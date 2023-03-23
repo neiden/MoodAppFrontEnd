@@ -16,7 +16,7 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
-    path: 'home',
+    path: 'home/:id',
     component: FeedComponent
   },
   {

@@ -13,7 +13,7 @@
                   <textarea id="post" [formControl]="postContent" rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="form" placeholder="What's on your mind?"></textarea>
                   <div class="mda-form-control-line"></div>
                 </div>
-                <button (click)="createPost()" class="mda-form-msg right">Post</button>
+                <button (click)="createPost(u_Id)" class="mda-form-msg right">Post</button>
                 <button (click)="authenticate()" class="mda-form-msg right">Authenticate</button>
                 <button (click)="getGoogleScore()" class="mda-form-msg right">Generate Playlist</button>
               </div>
