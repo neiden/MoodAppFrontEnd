@@ -35,16 +35,16 @@ export class ProfileComponent implements OnInit{
         //call all functions to populate everything
         this.activatedRoute.params.subscribe(params => {
           console.log('params', params);
-          // //get all accounts
-          // this.m_service.getAllUsers().subscribe((data) => {
-          //   this.user = data.find(u => u.user_Id === parseInt(params['user']));
-          //   console.log(this.user);
-          // })
+          //get all accounts
+          this.m_service.getAllUsers().subscribe((data) => {
+            this.user = data.find(u => u.user_Id === parseInt(params['user']));
+            console.log(this.user);
+          })
           
-          // console.log(params['user'].toString());
-          // this.m_service.loginUser(params['user'],params['pwd']).subscribe(data => {
-          //   console.log(data);
-          // })
+          console.log(params['user'].toString());
+          this.m_service.loginUser(params['user'],params['pwd']).subscribe(data => {
+            console.log(data);
+          })
         this.getUserInfo();
         this.getPosts();
         this.getPlaylist();
