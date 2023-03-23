@@ -7,6 +7,7 @@ export interface Account{
     birthdate: Date | string
     phoneNumber : string, 
     zipcode : string, 
+    user_Id : any;
     
     /*
         acc.Firstname = info[0];
@@ -31,7 +32,6 @@ export interface User{
 }
 
 export interface Post{
-
     content: string, 
     postId : any, 
     likes : any, 
@@ -44,4 +44,16 @@ export interface Playlist{
     user_id: number,
     name: string,
     link: string
+}
+
+export interface Acc{
+    username : string, 
+    password : string, 
+    email : string, 
+    user_Id : any, 
+    firstname : string, 
+    lastname : string, 
+    phoneNumber : string, 
+    zipcode : string, 
+    birthdate : Date | string     
 }
