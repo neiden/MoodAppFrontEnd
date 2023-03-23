@@ -42,8 +42,21 @@ export class MoodAPIService {
     return this.http.get(url) as Observable<Array<User>>;
   }
 
-  updateUsers( acc : Acc) : void{
-
+  updateUser( acc : Acc) : Observable<any>{
+    const url = this.apiRoot + "/Users/Users"
+    const headers = {'accept' : 'text/plain' ,'Content-Type': 'application/json'}
+    const body = {
+      "username": acc.username,
+      "password": acc.password,
+      "email": acc.email,
+      "user_Id": acc.user_Id,
+      "firstname": acc.firstname,
+      "lastname": acc.lastname,
+      "phoneNumber": acc.phoneNumber,
+      "zipcode": acc.zipcode,
+      "birthdate": acc.birthdate
+    }
+    return this.http.put(url, body, {headers: headers});
   }
 
   getAllPosts( id : any) : Observable<Array<Post>> {

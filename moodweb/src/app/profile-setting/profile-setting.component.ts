@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, Validators, FormGroup, FormArray} from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
 import { SpotifyApiService } from '../spotify-api.service';
-import { Account, User} from 'src/models/account';
+import { Account, User, Acc} from 'src/models/account';
 import { formatDate } from '@angular/common';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
@@ -41,8 +41,15 @@ export class ProfileSettingComponent implements OnInit {
   }) 
 
 
-  ngOnInit(): void {
-    this.m_service.getAccount(10).subscribe(data => {
+  ngOnInit(): any{
+    
+    this.activatedRoute.params.subscribe(params => {
+    console.log('params', params)
+    this.u_Id = parseInt(params['id'])
+    console.log(this.u_Id);
+  })
+
+      this.m_service.getAccount(this.u_Id).subscribe(data => {
       console.log(data);
       this.acc = data; 
       console.log(this.acc)
@@ -57,21 +64,64 @@ export class ProfileSettingComponent implements OnInit {
       this.city = this.getLoc(this.zip);
       this.u_Id = this.acc.user_Id;
     })
+
+    return this.acc;
   }
 
-  updateUser(e: Event){
-      console.log(this.form.value);
-      if(!this.form.controls['firstname'].value){
-        console.log("this is empty")
-      }
+  getAccount() : Account{
+    return this.ngOnInit();
+  }
 
-      //checks if control input is empty
+  updateUser(e : Event){
+      const accU = {} as Account;
+      let newAcc = this.getAccount();
+      console.log(this.form.value);
+
+      let empty : Boolean = false;
+      let count : number = 0;
       Object.keys(this.form.controls).forEach(key => {
-        console.log(key);
-        if(!this.form.controls[key].value){
-          console.log(key + "this is empty")
+        if(!this.form.controls[key].value){ 
+          count = count + 1;
         }
       })
+      if(count === 7){
+        empty = true;
+        console.log("empty");
+        this.goToProfile(this.acc?.user_Id);
+      }
+      else {
+         //checks if control input is empty
+        Object.keys(this.form.controls).forEach(key => {
+          if(this.form.controls[key].value){        
+            if(this.form.controls[key] == this.form.controls['firstname']){
+              newAcc.firstname = this.form.controls[key].value;
+            }
+            else if(this.form.controls[key] == this.form.controls['lastname']){
+              newAcc.lastname = this.form.controls[key].value;
+            }
+            else if(this.form.controls[key] == this.form.controls['username']){
+              newAcc.username = this.form.controls[key].value;
+            }
+            else if(this.form.controls[key] == this.form.controls['email']){
+              newAcc.username = this.form.controls[key].value;
+            }
+            else if(this.form.controls[key] == this.form.controls['bdate']){
+              let formattedDate  = formatDate(this.form.controls['bdate'].value, 'MM/dd/yyyy', 'en-US')
+              newAcc.username = formattedDate;
+            }
+            else if(this.form.controls[key] == this.form.controls['phonenum']){
+              newAcc.phoneNumber = this.form.controls[key].value;
+            } 
+            else {
+              newAcc.zipcode = this.form.controls[key].value;
+            } 
+        }
+      })
+
+        this.m_service.updateUser(newAcc).subscribe(data => console.log(data));
+      }
+
+     
 
       //test get all users
       this.m_service.getAllUsers().subscribe(data => console.log(data))
@@ -88,8 +138,8 @@ export class ProfileSettingComponent implements OnInit {
      })
    }
 
-   goToProfile(){
-    this.router.navigateByUrl('profile/${10}')
+   goToProfile(uid : any){
+    this.router.navigate(['/profile', uid])
    }
 
 }

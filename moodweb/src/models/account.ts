@@ -40,7 +40,7 @@ export interface Post{
 }
 
 export interface Playlist{
-    playId : any; 
+    playlistId : any; 
     userId: any; 
     name: string, 
     spotifyLink : string

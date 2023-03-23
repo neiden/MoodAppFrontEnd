@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { FormBuilder, FormControl, Validators, FormGroup, FormArray} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
@@ -14,7 +14,7 @@ import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 })
 export class ProfileComponent implements OnInit{
    
-    
+     
     
     name : string ="";
     playlistNum : any;
@@ -29,33 +29,29 @@ export class ProfileComponent implements OnInit{
     acc? : Account = undefined;
     id : any;
     geo ? : MapGeocoderResponse = undefined;
+    private routeSub?: Subscription;
+
     constructor(private router:Router, private m_service : MoodAPIService, private s_service : SpotifyApiService, private activatedRoute: ActivatedRoute){}
 
     ngOnInit(){
         //call all functions to populate everything
         this.activatedRoute.params.subscribe(params => {
-          console.log('params', params);
+        console.log('params', params);
           // //get all accounts
-          // this.m_service.getAllUsers().subscribe((data) => {
-          //   this.user = data.find(u => u.user_Id === parseInt(params['user']));
-          //   console.log(this.user);
-          // })
-          
-          // console.log(params['user'].toString());
-          // this.m_service.loginUser(params['user'],params['pwd']).subscribe(data => {
-          //   console.log(data);
-          // })
-        this.getAccountInfo();
-        this.getPosts();
-        this.getPlaylist();
-        this.getFriends();
-          
+        this.m_service.getAllUsers().subscribe((data) => {
+        console.log(data); 
+        this.user = data.find(u => u.user_Id === parseInt(params['user']))
+        this.getAccountInfo(this.user?.user_Id);
+        this.getPosts(this.user?.user_Id);
+        this.getPlaylist(this.user?.user_Id);
+        this.getFriends(this.user?.user_Id);
         })
+      })
     }
 
-    getAccountInfo(){
+    getAccountInfo(id : any){
       //request to get name or passed from login? 
-      this.m_service.getAccount(10).subscribe(data => {
+      this.m_service.getAccount(id).subscribe(data => {
         console.log(data);
         this.acc = data;
         console.log(this.acc);
@@ -64,21 +60,13 @@ export class ProfileComponent implements OnInit{
         
         this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
         this.id = this.acc.user_Id;
-
-        this.m_service.getAllFriends(this.id).subscribe(data => {
-          this.friends = data;
-          console.log(data);
-          console.log(this.friends);
-          this.friendsNum = this.friends.length;
-        })
-        
       });
 
     }
 
-    getPosts() : any{
+    getPosts(id : any) : any{
       //get all user posts
-      this.m_service.getAllPosts(1).subscribe(data => {
+      this.m_service.getAllPosts(id).subscribe(data => {
         this.posts = data;
         console.log(data);
         console.log(this.posts);
@@ -86,15 +74,19 @@ export class ProfileComponent implements OnInit{
       })
     }
 
-    getFriends(){
+    getFriends(id : any){
       //get all user posts
-      console.log(this.acc?.user_Id)
-      
+      this.m_service.getAllFriends(id).subscribe(data => {
+        this.friends = data;
+        console.log(data);
+        console.log(this.friends);
+        this.friendsNum = this.friends.length;
+      })
     }
 
-    getPlaylist(){
+    getPlaylist(id : any){
       //get all user posts
-      this.m_service.getAllPlaylist(1).subscribe(data => {
+      this.m_service.getAllPlaylist(id).subscribe(data => {
         this.playlists = data;
         console.log(data);
         console.log(this.playlists);
@@ -112,7 +104,12 @@ export class ProfileComponent implements OnInit{
     }
 
     //when user clicks edit profile
-    editProfile(){
-      this.router.navigateByUrl('profilesettings/${10}');
+    editProfile(id : any){
+      console.log(id);
+      this.router.navigate(['/profilesettings', id]);
+    }
+
+    ngOnDestroy() {
+      this.routeSub?.unsubscribe();
     }
 }
