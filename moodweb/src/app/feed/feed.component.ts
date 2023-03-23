@@ -3,7 +3,11 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { MoodAPIService } from '../mood-api.service';
+import {FormControl, FormBuilder} from '@angular/forms';
 import { ViewPostsComponent } from '../view-posts/view-posts.component';
+import { Playlist, Post } from 'src/models/account';
+import { SpotifyApiService } from '../spotify-api.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-feed',
@@ -11,15 +15,25 @@ import { ViewPostsComponent } from '../view-posts/view-posts.component';
   styleUrls: ['./feed.component.css'],
 })
 export class FeedComponent {
+
+  token: string = '';
+  songArr: string[] = [];  
+  songNames: string[] = [];
+  songArtists: string[] = [];
+  spotifyLink: string = '';
+  spotifyPost: string = "";
   
-  constructor(private router:Router, private service: MoodAPIService) {}
+  constructor(private router:Router, private service: MoodAPIService, private spotify_service: SpotifyApiService) {}
+
+  postContent: FormControl = new FormControl('');
  
   post1: PostData = {
     name: "John Swanberg",
     id: 2,
     imgSrc: "https://bootdey.com/img/Content/avatar/avatar6.png",
     content: "Today was a great today woweee",
-    date: "3/20 11:32AM"
+    date: "3/20 11:32AM",
+    likes: 3
   }
 
   post2: PostData = {
@@ -27,7 +41,8 @@ export class FeedComponent {
     id: 3,
     imgSrc: "https://bootdey.com/img/Content/avatar/avatar6.png",
     content: "I love music and I'm a little deranged :)",
-    date: "3/21 8:14PM"
+    date: "3/21 8:14PM",
+    likes: 1
   }
   
   post3: PostData = {
@@ -35,7 +50,8 @@ export class FeedComponent {
     id: 4,
     imgSrc: "https://bootdey.com/img/Content/avatar/avatar6.png",
     content: "I shouldn't have been able to kill the Night King that was dumb.",
-    date: "1/25 2:22AM"
+    date: "1/25 2:22AM",
+    likes: 5
   }
 
 
@@ -57,12 +73,105 @@ export class FeedComponent {
 
   goToProfile(){}
 
+
+  createPost(){
+    const post = {} as Post;
+    post.content = this.postContent.value;
+    console.log(post.content);
+    post.likes = 0;
+    post.postDate = new Date();
+    //cache'd user.id
+    post.userID = 7
+    this.service.createPost(post).subscribe((data: any) =>{
+      console.log("this was created: " + data);
+    });
+  }
+
+
+  authenticate(){
+    this.spotify_service.authenticate();
+  }
+
+  getGoogleScore(){
+    // this.service.googleDemo().subscribe((data: any) =>{
+    //   console.log(data);
+    // });
+    const uId = 7;
+    var postContent = "";
+    
+    this.service.getAllPosts(uId).subscribe((data: any) => {
+      for (var i = 0; i < data.length; i++){
+        var dateStr = new Date(data[i]['postDate']);
+        var today = new Date();
+        if(dateStr.getDate() === today.getDate()){
+          postContent += data[i]['content'] + " ";
+        }
+      }
+      console.log("Posts being sent to google sentiment: "+ postContent);
+
+      this.service.getGoogleScore(uId, postContent).subscribe((data: any) => {
+        this.generatePlaylist(data['documentSentiment'].score);
+      });
+    });
+  }
+
+
+  generatePlaylist(score: any){
+    var uId = 7;
+    
+    this.token = this.spotify_service.getToken();
+    this.spotify_service.getTracks(score, this.token).subscribe((data: any) =>{
+      console.log(data);
+      const arr = data['tracks']['items'];
+      for (var i = 0; i < arr.length; i++){
+        console.log("Name of track: " + arr[i]['name'] + " uri of track: " + arr[i]['uri'])
+        this.songArr.push(arr[i]['uri']);
+        this.songNames.push(arr[i]['name']);
+        this.songArtists.push(arr[i]['artists'][0]['name']);
+        this.spotifyPost += `${i+1}.) ` + arr[i]['name'] + " by " + arr[i]['artists'][0]['name'] + "\n";
+      }
+      this.spotify_service.getUserId(this.token).subscribe((data2: any) => {
+        this.spotify_service.createPlaylist(this.songArr, this.token, data2["id"]).subscribe((data3: any) => {4
+          var link = data3['external_urls']['spotify'];
+          this.spotifyPost += link;
+          const post = {} as Post;
+          //post.content = this.spotifyPost;
+          post.content = this.spotifyPost;
+          post.userID = uId;
+          post.likes = 0;
+          post.postDate = "",
+          post.postId = 0;
+
+          const playlist = {} as Playlist;
+          playlist.link = link;
+          playlist.name = "Mood Playlist " + formatDate(new Date(), 'MM/dd', 'en');
+          playlist.playlist_id = 0;
+          playlist.user_id = uId;
+          //create playlist in db
+          this.service.createPlaylist(playlist).subscribe((data: any) => {
+            console.log("playlist created : " + playlist);
+          });
+          //create post in db
+          console.log("post being sent to be created : " + post.content);
+          this.service.createPost(post).subscribe((data: any) => {
+            console.log("post Created: " + data);  
+          });
+
+          this.spotify_service.populatePlaylist(this.songArr, this.token, data3['id']).subscribe((data: any) => {
+            console.log(this.postContent);
+          })
+        })
+      })
+    });
+  }
 }
+
 
 export interface PostData{
   name: string,
   id: number,
   imgSrc: string,
   content: string,
-  date: string
+  date: string,
+  likes: number,
 }

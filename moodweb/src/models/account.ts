@@ -38,3 +38,10 @@ export interface Post{
     postDate : Date | string, 
     userID : any
 }
+
+export interface Playlist{
+    playlist_id: number,
+    user_id: number,
+    name: string,
+    link: string
+}
