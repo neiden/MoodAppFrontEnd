@@ -5,7 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-playlist-view.component';
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 const routes: Routes = [
   {
     path: 'login', 
@@ -16,7 +16,7 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
-    path: 'home',
+    path: 'home/:id',
     component: FeedComponent
   },
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'profile/:user',
     component: ProfileComponent
+  },
+  {
+    path: 'profilesettings/:id',
+    component: ProfileSettingComponent
   }
 
 ];

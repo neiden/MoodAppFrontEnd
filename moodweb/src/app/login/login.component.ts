@@ -52,7 +52,8 @@ export class LoginComponent {
       this.user = data;
       if(this.user.user_Id){
         console.log(this.user.user_Id);
-        this.router.navigate(['profile', "${this.user.user_Id}"]);
+        this.router.navigate(['/home', this.user.user_Id]);
+        //this.router.navigate(['/profile', this.user.user_Id]);
       }
     });
     
@@ -71,4 +72,5 @@ export class LoginComponent {
     console.log(this.username);
     console.log(this.password);
   }
+
 }

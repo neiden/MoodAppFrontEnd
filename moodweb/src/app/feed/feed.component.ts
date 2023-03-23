@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { MoodAPIService } from '../mood-api.service';
 import {FormControl, FormBuilder} from '@angular/forms';
@@ -8,6 +8,7 @@ import { ViewPostsComponent } from '../view-posts/view-posts.component';
 import { Playlist, Post, User } from 'src/models/account';
 import { SpotifyApiService } from '../spotify-api.service';
 import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-feed',
@@ -22,8 +23,9 @@ export class FeedComponent implements OnInit{
   songArtists: string[] = [];
   spotifyLink: string = '';
   spotifyPost: string = "";
+  u_Id : any;
   
-  constructor(private router:Router, private service: MoodAPIService, private spotify_service: SpotifyApiService) {}
+  constructor(private router:Router, private service: MoodAPIService, private spotify_service: SpotifyApiService, private activatedRoute : ActivatedRoute) {}
 
   postContent: FormControl = new FormControl('');
  
@@ -72,30 +74,32 @@ export class FeedComponent implements OnInit{
     //this.service.getAllPosts(user.userId).subscribe((data: any) => {
     //  posts = data['posts'];
     //}); 
+    this.activatedRoute.params.subscribe(data => {
+      this.u_Id = parseInt(data['id'])
+    })
 
-    //this.getFeed();
-    this.getUserFeed();
+    this.getUserFeed(this.u_Id);
   }
 
   goToProfile(){}
 
 
-  createPost(){
+  createPost(id : any){
     const post = {} as Post;
     post.content = this.postContent.value;
     console.log(post.content);
     post.likes = 0;
     post.postDate = new Date();
     //cache'd user.id
-    post.userID = 7
+    post.userID = id
     this.service.createPost(post).subscribe((data: any) =>{
       console.log("this was created: " + data);
     });
   }
 
-  getUserFeed(){
+  getUserFeed(id : any){
     //needs postList: PostData[] = [];
-    var uid = 7;
+    var uid = id;
     this.service.getUser(uid).subscribe((data: any) => {
       var name = data['firstname'] + data['lastname'];
       this.service.getAllPosts(uid).subscribe((data: any) => {

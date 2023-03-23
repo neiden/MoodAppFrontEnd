@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, firstValueFrom } from 'rxjs';
-import { Account, User, Post, Playlist, Comment} from 'src/models/account';
+import { Account, User, Post, Playlist, Comment, Acc} from 'src/models/account';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Injectable({
@@ -74,7 +74,27 @@ export class MoodAPIService {
   }
 
   getAllUsers() : Observable<Array<User>>{
-    return this.http.get(this.apiRoot) as Observable<Array<User>>;
+    let url = this.apiRoot + "/User/AllUsers";
+    return this.http.get(url) as Observable<Array<User>>;
+  }
+
+  updateUser( acc : Acc) : Observable<any>{
+    let temp = "http://localhost:5005/User/Users"
+    const url = this.apiRoot + "/Users/Users"
+    // const headers = {'accept' : 'text/plain' ,'Content-Type': 'application/json'}
+    // const body = {
+    //   "username": acc.username,
+    //   "password": acc.password,
+    //   "email": acc.email,
+    //   "user_Id": acc.user_Id,
+    //   "firstname": acc.firstname,
+    //   "lastname": acc.lastname,
+    //   "phoneNumber": acc.phoneNumber,
+    //   "zipcode": acc.zipcode,
+    //   "birthdate": acc.birthdate
+    // }
+    // return this.http.put(temp, body, {headers: headers});
+    return this.http.put(temp,acc);
   }
 
   getUser(uId: number): Observable<User>{
@@ -94,8 +114,8 @@ export class MoodAPIService {
   }
 
   getAllFriends( id : any) : Observable<Array<User>>{
-    
     return this.http.get(this.apiRoot + "/Friend/Friends?uId=" + id) as Observable<Array<User>>; 
+
   }
 
   getMockAccount() : Observable<Array<any>>{
