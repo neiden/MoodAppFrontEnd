@@ -102,6 +102,7 @@ export class ProfileComponent implements OnInit{
      this.m_service.getLocation(zipcode).subscribe( data2 => {
       this.geo = data2;
       this.location = this.geo.results[0].formatted_address;
+      return this.location;
       })
     }
 
