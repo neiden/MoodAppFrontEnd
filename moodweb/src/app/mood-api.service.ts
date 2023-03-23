@@ -10,8 +10,8 @@ import { Account, User, Post} from 'src/models/account';
 
 export class MoodAPIService {
   
-  // googlemapapiurl : string = "https://maps.googleapis.com/maps/api/geocode/json?address="
-  // googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
+  googlemapapiurl : string = "https://maps.googleapis.com/maps/api/geocode/json?address="
+  googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
   mapiRoot : string = "https://moodapi.azurewebsites.net/Account";
 
   apiRoot : string = "https://moodapiv2.azurewebsites.net";

@@ -27,6 +27,7 @@ import { ViewPostsComponent } from './view-posts/view-posts.component';
     FeedComponent,
     ProfileComponent,
     ViewPostsComponent,
+    // MapGeocoder
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,6 @@ export class LoginComponent {
   acc? : Account = undefined;
   user? : User = undefined;
 
-
   constructor(private router:Router, private fBuilder : FormBuilder, private service : MoodAPIService) {} 
 
   form : FormGroup = this.fBuilder.group({
@@ -55,8 +54,6 @@ export class LoginComponent {
         this.router.navigate(['profile', "${this.user.user_Id}"]);
       }
     });
-    
-
   }
 
   processForm(e: Event) : void{
