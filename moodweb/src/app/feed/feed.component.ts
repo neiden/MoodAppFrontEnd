@@ -5,7 +5,7 @@ import { OnInit } from '@angular/core';
 import { MoodAPIService } from '../mood-api.service';
 import {FormControl, FormBuilder} from '@angular/forms';
 import { ViewPostsComponent } from '../view-posts/view-posts.component';
-import { Playlist, Post } from 'src/models/account';
+import { Playlist, Post, User } from 'src/models/account';
 import { SpotifyApiService } from '../spotify-api.service';
 import { formatDate } from '@angular/common';
 
@@ -14,7 +14,7 @@ import { formatDate } from '@angular/common';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css'],
 })
-export class FeedComponent {
+export class FeedComponent implements OnInit{
 
   token: string = '';
   songArr: string[] = [];  
@@ -57,7 +57,10 @@ export class FeedComponent {
 
   Object : Object = Object;
 
-  postList: PostData[] = [this.post1,this.post2,this.post3];
+  //postList: PostData[] = [this.post1,this.post2,this.post3];
+  postList: PostData[] = [];
+  userList: User[] = []
+
 
 
 
@@ -65,10 +68,13 @@ export class FeedComponent {
 
   users = ["John Swanberg", "Frank Zappa", "name"]
 
-  NgOnInit(){
+  ngOnInit(){
     //this.service.getAllPosts(user.userId).subscribe((data: any) => {
     //  posts = data['posts'];
     //}); 
+
+    //this.getFeed();
+    this.getUserFeed();
   }
 
   goToProfile(){}
@@ -85,6 +91,68 @@ export class FeedComponent {
     this.service.createPost(post).subscribe((data: any) =>{
       console.log("this was created: " + data);
     });
+  }
+
+  getUserFeed(){
+    //needs postList: PostData[] = [];
+    var uid = 7;
+    this.service.getUser(uid).subscribe((data: any) => {
+      var name = data['firstname'] + data['lastname'];
+      this.service.getAllPosts(uid).subscribe((data: any) => {
+        for(var i = 0; i < data.length; i++){
+          var post = {} as PostData;
+          post.name = name;
+          post.content = data[i]['content'];
+          post.date = data[i]['postDate'];
+          post.likes = data[i]['likes'];
+          post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
+          post.id = data[i]['postId'];
+          this.postList.push(post);
+        }
+      })
+    })
+
+  }
+
+  getFeed(){
+    //get friends list
+    //loop over every friend
+    //  -postList = List<Post> 
+    //  postList.add(getPosts(friend.id))
+    //  
+    var uId = 7;
+    this.service.getAllFriends(uId).subscribe((data:any) => {
+      console.log(data)
+      for (var i = 0; i < data.length; i++){
+        var friend = {} as User;
+        var name = data[i]['f_Name'] + data[i]['l_Name'];
+        friend.birthdate = data[i]['birthdate'];
+        friend.f_Name = data[i]['f_name'];
+        friend.l_Name = data[i]['l_name'];
+        friend.phone_Number = data[i]['phone_number'];
+        friend.user_Id = data[i]['user_Id'];
+        friend.zipcode = data[i]['zipcode'];
+        this.userList.push(friend);
+
+        this.service.getAllPosts(data[i]['user_Id']).subscribe((data: any) => {
+          for (var j = 0; j < data.length; j++){
+            var post = {} as PostData;
+            post.name = name;
+            post.content = data[j]['content'];
+            post.date = data[j]['postDate'];
+            post.likes = data[j]['likes'];
+            post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
+            post.id = data[j]['postId'];
+            this.postList.push(post);
+           // console.log("This is a post by: " + name + data[j]['content']);
+          }
+        })
+      }
+
+    });
+
+
+    
   }
 
 
@@ -148,6 +216,7 @@ export class FeedComponent {
           playlist.playlist_id = 0;
           playlist.user_id = uId;
           //create playlist in db
+          console.log(playlist);
           this.service.createPlaylist(playlist).subscribe((data: any) => {
             console.log("playlist created : " + playlist);
           });

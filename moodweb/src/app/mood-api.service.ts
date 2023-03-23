@@ -38,7 +38,7 @@ export class MoodAPIService {
   getGoogleScore(uId: number, postContent: string): Observable<any>{
     const apikey : string= "AIzaSyCfJR1Q9fqCqDHqy80cLnpBYUyP2s3WSuc";
     //Only lasts for one hour!!!
-    const token: string= "ya29.c.b0Aaekm1Ic0eaPptKS3aAp-DiM2ogVOqMawQLnwf66QHpDBK6h5_m5OH4vaBBLgqKh4xvGcC53jIR3DlxdzuLPzH8fw_-r2exi7xudsU0c8g5KjIekBGV_cUAX7eVQBwAVQcW2A8lyvwSXRguvVbhF39eKbhSudmY829d2OyBC5ju-2dguw8U1EvfFUGROr3qzlUBFtWEDE8Jw_CttKXzl1qjnGct8Dy17THaT4DIn87NfHs7ST6VRHps-8UnviApoDhanhDOsfvJO2cHq-xvsWIxAQ_LL0vYXOdmpgHX6fz2XPerwh06MSwwPfUjZBrYUDTMEt0S1pZIE340KOgrrSkh1kJ2dR4Y793lFRgXjFaw57qcrnv-BuFeb42ta0m1sRR_koY2tip1i0f2_M-ckzF59ZttfjzkyXr0avuQQ_m-FX1QQrp4jswrio6pneJB8fFYIQUzluiI649W-Q6bV610MU2w2n6Sz8abz24jMotJ03F0hyQj796-s9eQs67xQQupRo9w0X6-jM0k1MIYZkm8c0Fwfp4m5MJblen1MpjW-5Wuc9MU4heIgeI9pkf6f9QqM48U03crXs08qmsq0f2zFRvwhh_4JkFrZ1mUQQ2BolyVQjVmg8kmtr4xO8w59OFvMUQ9dzcYfW-8Jvc3ZSa0e2alleotVbi-plguop8qxk88rzk2Ycd-_0mml30-jxRp8zyYpI2Ik0mVQj-s3O7yn9OYk0U7F1Z4wIt-412eXalFk0hx2xfQWVs6iB7Yh5XM27xSRfvw4ha224kVaX0u9crhpx7BimoUXX1RkivQiu1evRo1a7Ua8totpp5aeu_xOSgpUF3jsyd3h71fFqqq48wrbgVpFvkp3I5W0x6rmap01ckj2bgu498gR3Otfk0BvfjipQ2l65UWYQjn0YUYkVZem4YW3i3stZkq7suUuawBUn5wchYnROfzWdqicJFyQ9iri1ek8l99t9imVjF0WkSXjntVdMM-eZSImicOUSM_4hdl2lJ5";
+    const token: string= "ya29.c.b0Aaekm1KHEi5D5ZnUppEenE_skNvtqFbunhIhyDogk3aFsv2aL6Skj36yUHSwXz_AtJZGpMZdRYNA67Zgq0S5GSP2JJ4yh1RI64opJ39IJQCuHXekh4eDIz6kJuvPCIs5RAaVVIKR-vUyiaKPWjQWoS0lydDQWjSrNqWBxynmZWjNsP5Qw3ISWR72LaQO9rwi2jD-mRUPNczsUHmXqLht_5X3wpT5zx-4QX7FYAFiWtZL5hSic9an9ktHAe_DRZh3nvgVNx56uATr-cMG-DQHt0pk2iCziaGjLLlnEp5lQj8ylNcIjZ1x3-ZeF9NTOsZj-ncjq78JL337Alb7y_Fncs6sk0-8WR9YSZXgZu41wt__sQqa_XhjS7JRhadI_IYOe9sWRFOxxQZhkqalQVt6ml_ziOUty2yQVJXBdl1cskROFqzrB_SYo9F5BhOJOUixkz38BpbcW8ckZstSzgkMYy7gwb2p9d5I8xIto31UYlZzv1BFkS96hxjBz6vV6enmy_xhM3WuFUY5sIr0f0l5rzmF2cth9VOSRoa5md71ZOedo4dZY_SmR68isnWuwbQ0tOazUi-O10q2ZZ1vkZyfjzn46dYZroUVSY4MxwevImsydmk_9wW9bbjR4nuMSy8JmRsi-1yd-muuOVlQ9i_4xUff4on8jcyx39RMQ_60v7F2zBxj7IkejXmh7w7QnlqQxsi2h3QeswaZf_l_7YvR7Vu5u7d14I9s0zkIMmjrYIZo_l9JgJXs0xgpffRlhR-lgfBXsJ-fy545O5l83Madoi2Jf0_Jco_MXcOyMJc0Mhf_1Y7a8y59pwbY5BFWp-oYSkVY4hl0QcJ5px1RW51J11YUOsMtBorQkXQFmhFvcodFZax-pR1titRwZylZaFbOq8hzl9xi7lkwhrhptgyd3U4lS3-Ix8wIasnQxSSkw4x6_XUZfB7pfmVMaMOk-BQVicQxpYqf8R3j8WIfevMz763jbeqQR7ou_S-v4yoVy3Q12IpQIdrIp38";
     const url: string = "https://language.googleapis.com/v1/documents:analyzeSentiment";
     const headers = {
       'Content-Type': 'application/json; charset=utf-8',
@@ -77,6 +77,10 @@ export class MoodAPIService {
     return this.http.get(this.apiRoot) as Observable<Array<User>>;
   }
 
+  getUser(uId: number): Observable<User>{
+    return this.http.get(this.apiRoot + "/User/Users?User_Id=" + uId) as Observable<User>;
+  }
+
   getAllPosts( id : any) : Observable<Array<Post>> {
     let url = this.apiRoot + "/Post/Posts?uId=" + id;
     return this.http.get(url) as Observable<Array<Post>>; 
@@ -89,9 +93,9 @@ export class MoodAPIService {
     return this.http.get(url) as Observable<Array<string>>; 
   }
 
-  getAllFriends( id : any) : Observable<Array<string>>{
+  getAllFriends( id : any) : Observable<Array<User>>{
     
-    return this.http.get(this.apiRoot) as Observable<Array<string>>; 
+    return this.http.get(this.apiRoot + "/Friend/Friends?uId=" + id) as Observable<Array<User>>; 
   }
 
   getMockAccount() : Observable<Array<any>>{
