@@ -10,16 +10,13 @@
             <div class="input-group mda-input-group">
               <div class="mda-form-group">
                 <div class="mda-form-control">
-                  <textarea rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="no-resize form-control"></textarea>
+                  <textarea id="post" [formControl]="postContent" rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="form" placeholder="What's on your mind?"></textarea>
                   <div class="mda-form-control-line"></div>
-                  <label class="m0">What's on your mind?</label>
-                </div><span class="mda-form-msg right">Any message here</span>
+                </div>
+                <button (click)="createPost()" class="mda-form-msg right">Post</button>
+                <button (click)="authenticate()" class="mda-form-msg right">Authenticate</button>
+                <button (click)="getGoogleScore()" class="mda-form-msg right">Generate Playlist</button>
               </div>
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-success"  style="margin-top:-44px">
-                    Save
-                </button> 
-              </span>
             </div>
           </form>
         </div>

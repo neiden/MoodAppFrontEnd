@@ -36,7 +36,7 @@ export class SpotifyPlaylistViewComponent {
 
 
 
-  createPlaylist(){
+  generatePlaylist(){
     
     this.token = this.service.getToken();
     this.service.getTracks(this.score.value, this.token).subscribe((data: any) =>{

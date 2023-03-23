@@ -73,7 +73,7 @@ export class SpotifyApiService {
       genre = "rap";
     }
     else if(score < 0){
-      genre = "blues";
+      genre = "ballad";
     }
     else{
       genre = "Cool Jazz";
