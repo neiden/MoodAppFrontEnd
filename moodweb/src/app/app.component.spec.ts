@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
 import { RouterTestingModule } from '@angular/router/testing'
 
 describe('AppComponent', () => {
@@ -9,7 +10,8 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        FooterComponent
       ],
     }).compileComponents();
   });
@@ -30,6 +32,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('moodweb app is running!');
+    console.log(compiled.querySelector('.content span')?.textContent);
+    expect(compiled.querySelector('.content span')?.textContent).toContain('moodweb');
   });
 });

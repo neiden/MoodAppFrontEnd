@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FeedComponent } from './feed.component';
+import { ViewPostsComponent } from '../view-posts/view-posts.component';
 
 describe('FeedComponent', () => {
   let component: FeedComponent;
@@ -8,7 +10,8 @@ describe('FeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedComponent ]
+      imports: [ReactiveFormsModule, HttpClientModule],
+      declarations: [ ViewPostsComponent, FeedComponent ]
     })
     .compileComponents();
 

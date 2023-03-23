@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { SpotifyApiService } from './spotify-api.service';
 
@@ -6,7 +7,10 @@ describe('SpotifyApiService', () => {
   let service: SpotifyApiService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [SpotifyApiService],
+    });
     service = TestBed.inject(SpotifyApiService);
   });
 
