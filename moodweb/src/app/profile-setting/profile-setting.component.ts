@@ -36,10 +36,10 @@ export class ProfileSettingComponent implements OnInit {
     lastname : new FormControl(''),
     username : new FormControl(''),
     email : new FormControl(''),
+    pwd : new FormControl(''),
     bdate : new FormControl(''),
     phonenum : new FormControl(''),
-    zipcode : new FormControl(''),
-    pwd : new FormControl(''),
+    zipcode : new FormControl('')
   }) 
 
 
@@ -125,12 +125,9 @@ export class ProfileSettingComponent implements OnInit {
       })
       }
 
-      console.log(newAcc.user_Id)
-
       this.m_service.updateUser(newAcc).subscribe(data => {
           console.log(data)
           //state changes were saved 
-          //go to profile
           this.router.navigate(['/profile', newAcc.user_Id])
       });
 
