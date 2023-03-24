@@ -45,17 +45,17 @@ const routes: Routes = [
     component: ProfileSettingComponent
   },
   {
-    path: 'friends/:id',
-    component: FriendsComponent
-  },
     path: 'friends',
     component: FriendsComponent
   },
   {
     path: 'fprofile/:id',
     component: FriendProfileComponent
-
-  }
+  },
+  {
+    path: 'friends/:id',
+    component: FriendsComponent
+  },
 
 ];
 
