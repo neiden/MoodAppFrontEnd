@@ -14,8 +14,8 @@ export class MoodAPIService {
   googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
  //mapiRoot : string = "https://moodapiapp.azurewebsites.net/Account";
 
-  apiRoot : string = "https://moodapiapp.azurewebsites.net";
-
+ // apiRoot : string = "https://moodapiapp.azurewebsites.net";
+  apiRoot : string = "https://moodapiapp2.azurewebsites.net"
 
   constructor(private http: HttpClient) { }
 
@@ -61,9 +61,9 @@ export class MoodAPIService {
     return this.http.get(geturl) as Observable<User>;
   }
 
-  registerUser(acc : Account){
-    let posturl = this.apiRoot + "/User/Users?info=" + acc.firstname + "&info=" + acc.lastname + "&info=" + acc.username + "&info=" + acc.email + "&info=" + acc.password + "&info=" + acc.zipcode;
-    return this.http.post(posturl, acc);
+  registerUser(acc : Account) : Observable<any>{
+    let posturl = this.apiRoot + "/User/Users?info=" + acc.firstname + "&info=" + acc.lastname + "&info=" + acc.username + "&info=" + acc.email + "&info=" + acc.password + "&info=" + acc.birthdate + "&info=" + acc.zipcode + "&info=" + acc.phoneNumber;
+    return this.http.post(posturl, acc) as Observable<any>;
   }
 
   getAccount( id : any): Observable<Account>{

@@ -3,6 +3,7 @@ import { Router} from '@angular/router';
 import { FormBuilder, FormControl, FormArray, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MoodAPIService } from '../mood-api.service';
+import { User } from 'src/models/account';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,6 +18,7 @@ export class LandingPageComponent {
   lname : string = ""
   email : string = ""
   password : string = ""
+  userId : any; 
 
   //dep injection of router
   constructor(private router: Router, private fBuilder : FormBuilder, private service : MoodAPIService){}
@@ -41,8 +43,9 @@ export class LandingPageComponent {
     this.form.markAllAsTouched();
     this.service.registerUser(this.form.value).subscribe(data => {
       console.log(data)
-      if(data.toString() == "true"){
-          //go to feed
+      this.userId = data; 
+      if(this.userId != 0){
+          this.router.navigate(['/home', this.userId]);
       }  
     });
    // this.fname= this.form.controls['fNameInput'].value; 

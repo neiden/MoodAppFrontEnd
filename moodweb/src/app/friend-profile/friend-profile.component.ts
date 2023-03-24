@@ -44,7 +44,7 @@ export class FriendProfileComponent implements OnInit{
         // //get all accounts
       this.m_service.getAllUsers().subscribe((data) => {
       console.log(data); 
-      this.user = data.find(u => u.user_Id === parseInt(params['user']))
+      this.user = data.find(u => u.user_Id === parseInt(params['fid']))
       this.getAccountInfo(this.user?.user_Id);
       this.getPosts(this.user?.user_Id);
       this.getPlaylist(this.user?.user_Id);
@@ -69,14 +69,17 @@ export class FriendProfileComponent implements OnInit{
   getAccountInfo(id : any){
     //request to get name or passed from login? 
     this.m_service.getAccount(id).subscribe(data => {
-      console.log(data);
-      this.acc = data;
-      console.log(this.acc);
-      this.name = this.acc.firstname + " " + this.acc.lastname;
-      //this gets location by zipcode
-      
-      this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
-      this.id = this.acc.user_Id;
+      if(data != null){
+        console.log(data);
+        this.acc = data;
+        console.log(this.acc);
+        this.name = this.acc.firstname + " " + this.acc.lastname;
+        //this gets location by zipcode
+        
+        this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
+        this.id = this.acc.user_Id;
+
+      }
     });
 
   }

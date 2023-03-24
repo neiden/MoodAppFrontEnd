@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb" class="main-breadcrumb" style="background: #5318FB;">
+  <ol class="breadcrumb" style="background: #5318FB; color:white">
+    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">Home</a></li>
+    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">User</a></li>
+    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">User Profile</a></li>
+  </ol>
+</nav>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -14,7 +21,7 @@
                     <p class="text-muted">Zipcode: {{friend.zipcode}}</p>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right" (click)="goFriendProfile(u_id,10)">View Profile</button>
+                    <button class="btn btn-primary pull-right" (click)="goFriendProfile(u_Id, friend.user_Id)">View Profile</button>
                   </div>
                 </div>
               </div> 
