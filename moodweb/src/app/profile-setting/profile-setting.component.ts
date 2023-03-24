@@ -87,7 +87,7 @@ export class ProfileSettingComponent implements OnInit {
           count = count + 1;
         }
       })
-      if(count === 7){
+      if(count === 8){
         empty = true;
         console.log("empty");
         this.goToProfile(this.acc?.user_Id);
@@ -123,16 +123,16 @@ export class ProfileSettingComponent implements OnInit {
             } 
         }
       })
+      }
 
       console.log(newAcc.user_Id)
 
-        this.m_service.updateUser(newAcc).subscribe(data => {
+      this.m_service.updateUser(newAcc).subscribe(data => {
           console.log(data)
           //state changes were saved 
           //go to profile
           this.router.navigate(['/profile', newAcc.user_Id])
-        });
-      }
+      });
 
      
 
