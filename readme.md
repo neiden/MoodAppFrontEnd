@@ -20,6 +20,7 @@ https://replit.com/join/ihnliyktuo-gibsonchan
 - As a user, I can listen to my playlists by being redirected to Spotify app
 - The program should be able to pull an existing Spotify playlist using the Spotify API based on the user’s mood analysis result.
 - The program should be able to analyze the user’s feelings through posts using Google Sentiment API.
+- The program should be able to analyze the users zipcode to return a city and state using Google Geocoder API.
 
 ## Design
 Figma Prototype 
