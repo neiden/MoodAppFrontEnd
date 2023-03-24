@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, firstValueFrom } from 'rxjs';
-import { Account, User, Post, Playlist, Comment, Acc} from 'src/models/account';
+import { Observable, firstValueFrom, ObservedValueOf } from 'rxjs';
+import { Account, User, Post, Playlist, Comment, Acc, CommentData, Mood} from 'src/models/account';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Injectable({
@@ -38,7 +38,7 @@ export class MoodAPIService {
   getGoogleScore(uId: number, postContent: string): Observable<any>{
     const apikey : string= "AIzaSyCfJR1Q9fqCqDHqy80cLnpBYUyP2s3WSuc";
     //Only lasts for one hour!!!
-    const token: string= "ya29.c.b0Aaekm1KHEi5D5ZnUppEenE_skNvtqFbunhIhyDogk3aFsv2aL6Skj36yUHSwXz_AtJZGpMZdRYNA67Zgq0S5GSP2JJ4yh1RI64opJ39IJQCuHXekh4eDIz6kJuvPCIs5RAaVVIKR-vUyiaKPWjQWoS0lydDQWjSrNqWBxynmZWjNsP5Qw3ISWR72LaQO9rwi2jD-mRUPNczsUHmXqLht_5X3wpT5zx-4QX7FYAFiWtZL5hSic9an9ktHAe_DRZh3nvgVNx56uATr-cMG-DQHt0pk2iCziaGjLLlnEp5lQj8ylNcIjZ1x3-ZeF9NTOsZj-ncjq78JL337Alb7y_Fncs6sk0-8WR9YSZXgZu41wt__sQqa_XhjS7JRhadI_IYOe9sWRFOxxQZhkqalQVt6ml_ziOUty2yQVJXBdl1cskROFqzrB_SYo9F5BhOJOUixkz38BpbcW8ckZstSzgkMYy7gwb2p9d5I8xIto31UYlZzv1BFkS96hxjBz6vV6enmy_xhM3WuFUY5sIr0f0l5rzmF2cth9VOSRoa5md71ZOedo4dZY_SmR68isnWuwbQ0tOazUi-O10q2ZZ1vkZyfjzn46dYZroUVSY4MxwevImsydmk_9wW9bbjR4nuMSy8JmRsi-1yd-muuOVlQ9i_4xUff4on8jcyx39RMQ_60v7F2zBxj7IkejXmh7w7QnlqQxsi2h3QeswaZf_l_7YvR7Vu5u7d14I9s0zkIMmjrYIZo_l9JgJXs0xgpffRlhR-lgfBXsJ-fy545O5l83Madoi2Jf0_Jco_MXcOyMJc0Mhf_1Y7a8y59pwbY5BFWp-oYSkVY4hl0QcJ5px1RW51J11YUOsMtBorQkXQFmhFvcodFZax-pR1titRwZylZaFbOq8hzl9xi7lkwhrhptgyd3U4lS3-Ix8wIasnQxSSkw4x6_XUZfB7pfmVMaMOk-BQVicQxpYqf8R3j8WIfevMz763jbeqQR7ou_S-v4yoVy3Q12IpQIdrIp38";
+    const token: string= "ya29.c.b0Aaekm1K5X0a99TSTizILoZnYL2qMaWae_JBImM51suzImeBO_BOG-ZRV1GouniDke5w4l3gFZbZMp0vwVLpPiUX795Yu37j3tpgS0jljX-Xk3hXblL58aF_r2wtHx8wwuLu7YFE85yoHCyzpR6wzph1edHIlhqu0LMtBrcBJyBkHr-v3JN1mxtMnyeYo-lgj0THgaWRTrsrzJsdYDse6REHbbU9Gdhg3d3umC5yNwuLPFW6FAvqgWgqtKaSVV03IaYUcQ5Qgv2ivBw8NuLWrCf_8W1JOK_o5ZJCPpwxFDntkA6bLNFV90L1j0LefYQUF9jxEZJLqG337K0cORv3fi-6hbfixB7ubnnU3Vo1jip5U_Wqyv5hJXUmt5ou2wno93nFZ68vQSfW9ZBhlq9avj-2kZa03bMmriVi8dalIJZ2_sQdjieY_9hyOB41obZec1yvXzBcn78w8_mWqX_B-M6dxxaltpzSsUjdV9--XjbRcfg2ScqRy4MMo55uwvvXmpkS6ts2mIX0VJif4xBB23ZO5Zoqvola96s0xB8yi9iUfQqUsIBWqo1lwessRFOaj54iq2lbtiaq98O9IUjqd2FyIXU_XMhQ6SS5FcXXfyb-Io5deuzdqp1MsMZobluFzY4Ol1F9QnOS1Q0v-Xj9RbWFyuRfw2Wz0xYlgy9kwui6StdbjRUjU5VRoxhgrvxIfpU1BM4RUnvFW5gi2W8rJmspxO8Yc0f-ssXYb-hSrRjdrVparu0V0XxR2VIzJ-I5fO3dbzxqrYh6repuFQ16XQBj1_OtRxS74gWsadXJj1oJl9g2mszfVIwbRjnbjgwzwvimoY4y7qhefSnQsoSpwudygvoWe05Y1XykgxlwM5dyZ4X2QVsdpoy0bqqiX4QnWF5h6eRy9-f9c2UltqBxp1i-RggU2iVnvoxklO5t8_upIb15Swr8e1YwoQZsZOsFyxF9bBbj0vcuRb1d95yjw7Y0u9kJqMt86pg7oS7BVgsdhujrW3R_fgrI";
     const url: string = "https://language.googleapis.com/v1/documents:analyzeSentiment";
     const headers = {
       'Content-Type': 'application/json; charset=utf-8',
@@ -128,13 +128,22 @@ export class MoodAPIService {
     return this.http.get(geoapi) as Observable<MapGeocoderResponse>
   }
 
-  createComment(comment: Comment) : Observable<Comment> {
+  getComments(p_Id: number) : Observable<Array<Comment>>{
+    return this.http.get(this.apiRoot + "/Comment/Comments?pId=" + p_Id) as Observable<Array<Comment>>;
+  }
+
+  getMoods(uId: number) : Observable<Array<Mood>>{
+    return this.http.get(this.apiRoot + "/Mood/Moods?uId=" + uId) as Observable<Array<Mood>>;
+  }
+
+  createComment(comment: CommentData) : Observable<Comment> {
     const url = this.apiRoot + "/Comment/Comments";
     const body = {
       "content" : comment.content,
       "commentId": 0,
       "postId": comment.postId,
       "likes": comment.likes,
+      "u_id": comment.u_id,
       "commentDate": new Date()
     }
     const headers = {
@@ -142,6 +151,21 @@ export class MoodAPIService {
     };
 
     return this.http.post(url, body, {headers: headers}) as Observable<Comment>;
+  }
+
+  createMood(mood: Mood) : Observable<Mood> {
+    const url = this.apiRoot + "/Mood/Moods";
+    const body = {
+      "moodId" : 0,
+      "userId" : mood.userId,
+      "date": mood.date,
+      "category": mood.category,
+      "score": mood.score
+    }
+    const headers = {
+      'Content-Type' : 'application/json', 'accept' : 'text/plain'
+    }
+    return this.http.post(url, body, {headers: headers}) as Observable<Mood>;
   }
 
   createPlaylist(playlist: Playlist) : Observable<any> {

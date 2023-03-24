@@ -44,6 +44,7 @@ export interface Comment{
     commentId: number,
     postId: number,
     likes: number,
+    u_id: number,
     commentDate: string
 }
 
@@ -53,7 +54,8 @@ export interface CommentData{
     commentId: number,
     postId: number,
     likes: number,
-    commentDate: string
+    commentDate: Date | string,
+    u_id: number
 }
 
 export interface Playlist{
@@ -73,4 +75,12 @@ export interface Acc{
     phoneNumber : string, 
     zipcode : string, 
     birthdate : Date | string     
+}
+
+export interface Mood{
+    moodId: number,
+    userId: number,
+    date: Date | string,
+    category: string,
+    score: number
 }

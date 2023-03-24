@@ -6,6 +6,7 @@ import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-pl
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
+import { CommentComponent } from './comment/comment.component';
 const routes: Routes = [
   {
     path: 'login', 
@@ -18,6 +19,14 @@ const routes: Routes = [
   {
     path: 'home/:id',
     component: FeedComponent
+  },
+  {
+    path: 'home',
+    component: FeedComponent
+  },
+  {
+    path: 'comment',
+    component: CommentComponent
   },
   {
     path: 'spotify',
