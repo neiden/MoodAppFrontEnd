@@ -178,6 +178,19 @@ export class FriendProfileComponent implements OnInit{
     })
 
   }
+
+  goHome(id : any){
+    this.router.navigate(['home', id]);
+  }
+
+  goProfile(id : any){
+    this.router.navigate(['profile', id]);
+  }
+  
+  goSettings(id : any){
+    this.router.navigate(['profilesettings', id]);
+  }
+
 }
 
 export interface PostData{

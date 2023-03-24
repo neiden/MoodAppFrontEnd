@@ -64,6 +64,19 @@ export class ProfileComponent implements OnInit{
     })
   }
 
+  goHome(id : any){
+    this.router.navigate(['home', id]);
+  }
+
+  goProfile(id : any){
+    this.router.navigate(['profile', id]);
+  }
+  
+  goSettings(id : any){
+    this.router.navigate(['profilesettings', id]);
+  }
+
+
   getAccountInfo(id : any){
     //request to get name or passed from login? 
     this.m_service.getAccount(id).subscribe(data => {

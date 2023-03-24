@@ -86,7 +86,18 @@ export class FeedComponent implements OnInit{
     this.getFeed();
   }
 
-  goToProfile(){}
+  goHome(id : any){
+    this.router.navigate(['home', id]);
+  }
+
+  goProfile(id : any){
+    this.router.navigate(['profile', id]);
+  }
+  
+  goSettings(id : any){
+    this.router.navigate(['profilesettings', id]);
+  }
+
 
 
   createPost(){
