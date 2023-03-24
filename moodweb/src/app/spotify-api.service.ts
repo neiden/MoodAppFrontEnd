@@ -16,7 +16,7 @@ export class SpotifyApiService {
   scope : string = 'user-read-private user-read-email playlist-modify-public';
   clientId : string = '0c8985046bc0483ebc4b6192fffa648d';
   clientSecret: string = 'bc3019aa224d49dcad001b9fd074d886';
-  redirectURI : string = 'https://kind-pebble-06d930310.2.azurestaticapps.net/home/'
+  redirectURI : string = 'http://localhost:4200/home/';
 
 
 

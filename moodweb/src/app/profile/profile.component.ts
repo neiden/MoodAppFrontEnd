@@ -39,16 +39,17 @@ export class ProfileComponent implements OnInit{
       //call all functions to populate everything
       this.activatedRoute.params.subscribe(params => {
       console.log('params', params);
+      this.id = params['user'];
         // //get all accounts
       this.m_service.getAllUsers().subscribe((data) => {
       console.log(data); 
       this.user = data.find(u => u.user_Id === parseInt(params['user']))
-      this.getAccountInfo(this.user?.user_Id);
-      this.getPosts(this.user?.user_Id);
-      this.getPlaylist(this.user?.user_Id);
-      this.getFriends(this.user?.user_Id);
-      this.getUserFeed(this.user?.user_Id);
-      this.getMood(this.user?.user_Id);
+      this.getAccountInfo(this.id);
+      this.getPosts(this.id);
+      this.getPlaylist(this.id);
+      this.getFriends(this.id);
+      this.getUserFeed(this.id);
+      this.getMood(this.id);
 
       this.m_service.getAllPlaylist(this.user?.user_Id).subscribe((data: any) =>{
         console.log(data);
@@ -63,8 +64,8 @@ export class ProfileComponent implements OnInit{
       });
       })
     })
-  }
 
+  }
   goHome(id : any){
     this.router.navigate(['home', id]);
   }
@@ -126,8 +127,10 @@ export class ProfileComponent implements OnInit{
   getLoc(zipcode : string) : any{
    // return this.m_service.getLocation(zipcode).subscribe(data => console.log(data));'
    this.m_service.getLocation(zipcode).subscribe( data2 => {
+    if(data2 != null){
     this.geo = data2;
     this.location = this.geo.results[0].formatted_address;
+    }
     return this.location;
     })
   }
