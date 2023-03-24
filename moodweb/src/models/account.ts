@@ -39,6 +39,25 @@ export interface Post{
     userID : any
 }
 
+export interface Comment{
+    content: string,
+    commentId: number,
+    postId: number,
+    likes: number,
+    u_id: number,
+    commentDate: string
+}
+
+export interface CommentData{
+    name: string,
+    content: string,
+    commentId: number,
+    postId: number,
+    likes: number,
+    commentDate: Date | string,
+    u_id: number
+}
+
 export interface Playlist{
     playlist_id: number,
     user_id: number,
@@ -56,4 +75,12 @@ export interface Acc{
     phoneNumber : string, 
     zipcode : string, 
     birthdate : Date | string     
+}
+
+export interface Mood{
+    moodId: number,
+    userId: number,
+    date: Date | string,
+    category: string,
+    score: number
 }

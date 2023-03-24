@@ -15,6 +15,7 @@ import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-pl
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ViewPostsComponent } from './view-posts/view-posts.component';
+import { CommentComponent } from './comment/comment.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { FriendsComponent } from './friends/friends.component';
 import { FriendProfileComponent } from './friend-profile/friend-profile.component';
@@ -30,6 +31,7 @@ import { FriendProfileComponent } from './friend-profile/friend-profile.componen
     FeedComponent,
     ProfileComponent,
     ViewPostsComponent,
+    CommentComponent,
     ProfileSettingComponent,
     FriendsComponent,
     FriendProfileComponent,

@@ -21,9 +21,9 @@ export class SpotifyPlaylistViewComponent {
   postContent : string = "";
 
 
-  authenticate(){
-    this.service.authenticate();
-  }
+  // authenticate(){
+  //   this.service.authenticate();
+  // }
 
   delay(ms: number){
     return new Promise(resolve => setTimeout(resolve, ms));

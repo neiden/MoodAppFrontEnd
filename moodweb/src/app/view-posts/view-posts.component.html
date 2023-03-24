@@ -17,6 +17,15 @@
       <button type="button" class="btn btn-flat btn-primary">Comment</button>
       <p>Likes: {{postData.likes}}</p>
     </div>
+    <app-comment *ngFor="let comment of commentList" [commentData]="comment"></app-comment>
+
+    <div class="social-comment">
+      <div class="media-body">
+          <textarea class="form-control" [formControl]="commentContent" placeholder="Write comment..."></textarea>
+          <button (click)="createComment()">Comment</button>
+      </div>
   </div>
+  </div>
+  
 </div>
 

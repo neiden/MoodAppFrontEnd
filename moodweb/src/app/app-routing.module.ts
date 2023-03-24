@@ -8,6 +8,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { FriendsComponent } from './friends/friends.component';
 import { FriendProfileComponent } from './friend-profile/friend-profile.component';
+import { CommentComponent } from './comment/comment.component'; 
+
 const routes: Routes = [
   {
     path: 'login', 
@@ -20,6 +22,14 @@ const routes: Routes = [
   {
     path: 'home/:id',
     component: FeedComponent
+  },
+  {
+    path: 'home',
+    component: FeedComponent
+  },
+  {
+    path: 'comment',
+    component: CommentComponent
   },
   {
     path: 'spotify',
