@@ -11,16 +11,16 @@ https://replit.com/join/ihnliyktuo-gibsonchan
 
 
 ## MVP Goals:
-As a user, I can create/log in to an account 
-As a user, I can add friends to account 
-As a user, I can view friends’ accounts 
-As a user, I can view profile page
-As a user, I can modify my information through settings
-As a user, I can view my playlists
-As a user, I can comment and react to my friends posts
-As a user, I can listen to my playlists by being redirected to Spotify app
-The program should be able to pull an existing Spotify playlist using the Spotify API based on the user’s mood analysis result.
-The program should be able to analyze the user’s feelings through posts using Google Sentiment API.
+- As a user, I can create/log in to an account 
+- As a user, I can view friends’ accounts 
+- As a user, I can view profile page
+- As a user, I can modify my information through settings
+- As a user, I can view my playlists
+- As a user, I can comment and react to my friends posts
+- As a user, I can listen to my playlists by being redirected to Spotify app
+- The program should be able to pull an existing Spotify playlist using the Spotify API based on the user’s mood analysis result.
+- The program should be able to analyze the user’s feelings through posts using Google Sentiment API.
+- The program should be able to analyze the users zipcode to return a city and state using Google Geocoder API.
 
 ## Design
 Figma Prototype 
