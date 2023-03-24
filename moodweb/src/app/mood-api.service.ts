@@ -12,7 +12,7 @@ export class MoodAPIService {
   
   googlemapapiurl : string = "https://maps.googleapis.com/maps/api/geocode/json?address="
   googleApiKeyMap : string ="&key=AIzaSyBEco-ddCVFeGzdwv54Xt-vNyfHCq5jBL0";
-  mapiRoot : string = "https://moodapiapp.azurewebsites.net/Account";
+ //mapiRoot : string = "https://moodapiapp.azurewebsites.net/Account";
 
   apiRoot : string = "https://moodapiapp.azurewebsites.net";
 
@@ -79,22 +79,10 @@ export class MoodAPIService {
   }
 
   updateUser( acc : Acc) : Observable<any>{
-    let temp = "http://localhost:5005/User/Users"
-    const url = this.apiRoot + "/Users/Users"
-    // const headers = {'accept' : 'text/plain' ,'Content-Type': 'application/json'}
-    // const body = {
-    //   "username": acc.username,
-    //   "password": acc.password,
-    //   "email": acc.email,
-    //   "user_Id": acc.user_Id,
-    //   "firstname": acc.firstname,
-    //   "lastname": acc.lastname,
-    //   "phoneNumber": acc.phoneNumber,
-    //   "zipcode": acc.zipcode,
-    //   "birthdate": acc.birthdate
-    // }
-    // return this.http.put(temp, body, {headers: headers});
-    return this.http.put(temp,acc);
+    //http://localhost:5169/User/Users?up=Shaggyyyyy&up=Rogers&up=ScoobySnacks31&up=mysterysnack%40scooby.com&up=newPass1&up=1969-10-31&up=92657&up=209654874&up=5
+    let url = this.apiRoot + "/User/Users?up=" 
+    let endpoint2 = acc.firstname + "&up=" + acc.lastname + "&up=" + acc.username + "&up=" + acc.email + "&up=" + acc.password + "&up=" + acc.birthdate + "&up=" + acc.zipcode + "&up=" + acc.phoneNumber + "&up=" + String(acc.user_Id);
+    return this.http.put(url+endpoint2,acc);
   }
 
   getUser(uId: number): Observable<User>{
@@ -118,10 +106,6 @@ export class MoodAPIService {
 
   }
 
-  getMockAccount() : Observable<Array<any>>{
-    return this.http.get(this.mapiRoot) as Observable<Array<any>>; 
-    
-  }
 
   getLocation(zipcode : string) : Observable<MapGeocoderResponse> {
     let geoapi = this.googlemapapiurl + zipcode + this.googleApiKeyMap;

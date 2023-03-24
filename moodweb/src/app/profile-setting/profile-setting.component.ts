@@ -22,6 +22,7 @@ export class ProfileSettingComponent implements OnInit {
   email : string = "";
   bdate : any;
   phonen : any;
+  pass : any;
   zip : any;
   city : any;
   geo ? : MapGeocoderResponse = undefined;
@@ -37,7 +38,8 @@ export class ProfileSettingComponent implements OnInit {
     email : new FormControl(''),
     bdate : new FormControl(''),
     phonenum : new FormControl(''),
-    zipcode : new FormControl('')
+    zipcode : new FormControl(''),
+    pwd : new FormControl(''),
   }) 
 
 
@@ -57,6 +59,7 @@ export class ProfileSettingComponent implements OnInit {
       this.lastn = this.acc.lastname;
       this.username = this.acc.username;
       this.email = this.acc.email;
+      this.pass = this.acc.password;
       let formattedDate  = formatDate(this.acc.birthdate, 'MM/dd/yyyy', 'en-US')
       this.bdate = formattedDate;
       this.phonen = this.acc.phoneNumber;
@@ -84,7 +87,7 @@ export class ProfileSettingComponent implements OnInit {
           count = count + 1;
         }
       })
-      if(count === 7){
+      if(count === 8){
         empty = true;
         console.log("empty");
         this.goToProfile(this.acc?.user_Id);
@@ -105,6 +108,9 @@ export class ProfileSettingComponent implements OnInit {
             else if(this.form.controls[key] == this.form.controls['email']){
               newAcc.username = this.form.controls[key].value;
             }
+            else if(this.form.controls[key] == this.form.controls['pwd']){
+              newAcc.password = this.form.controls[key].value;
+            } 
             else if(this.form.controls[key] == this.form.controls['bdate']){
               let formattedDate  = formatDate(this.form.controls['bdate'].value, 'MM/dd/yyyy', 'en-US')
               newAcc.username = formattedDate;
@@ -117,13 +123,16 @@ export class ProfileSettingComponent implements OnInit {
             } 
         }
       })
+      }
 
-        this.m_service.updateUser(newAcc).subscribe(data => {
+      console.log(newAcc.user_Id)
+
+      this.m_service.updateUser(newAcc).subscribe(data => {
           console.log(data)
           //state changes were saved 
           //go to profile
-        });
-      }
+          this.router.navigate(['/profile', newAcc.user_Id])
+      });
 
      
 

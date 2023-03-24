@@ -18,6 +18,7 @@ import { ViewPostsComponent } from './view-posts/view-posts.component';
 import { CommentComponent } from './comment/comment.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { FriendsComponent } from './friends/friends.component';
+import { FriendProfileComponent } from './friend-profile/friend-profile.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FriendsComponent } from './friends/friends.component';
     CommentComponent,
     ProfileSettingComponent,
     FriendsComponent,
+    FriendProfileComponent,
   ],
   imports: [
     BrowserModule,
