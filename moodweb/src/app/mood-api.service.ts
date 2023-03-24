@@ -64,8 +64,6 @@ export class MoodAPIService {
   }
 
   registerUser(acc : Account){
-    acc.username = "VelmaJinkies1";
-    acc.zipcode = "123456";
     let posturl = this.apiRoot + "/User/Users?info=" + acc.firstname + "&info=" + acc.lastname + "&info=" + acc.username + "&info=" + acc.email + "&info=" + acc.password + "&info=" + acc.zipcode;
     return this.http.post(posturl, acc);
   }
