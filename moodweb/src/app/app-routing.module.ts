@@ -6,8 +6,11 @@ import { SpotifyPlaylistViewComponent } from './spotify-playlist-view/spotify-pl
 import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
-import { CommentComponent } from './comment/comment.component';
 import { FriendsComponent } from './friends/friends.component';
+import { FriendProfileComponent } from './friend-profile/friend-profile.component';
+import { CommentComponent } from './comment/comment.component'; 
+
+
 const routes: Routes = [
   {
     path: 'login', 
@@ -44,6 +47,14 @@ const routes: Routes = [
   {
     path: 'friends/:id',
     component: FriendsComponent
+  },
+    path: 'friends',
+    component: FriendsComponent
+  },
+  {
+    path: 'fprofile/:id',
+    component: FriendProfileComponent
+
   }
 
 ];
