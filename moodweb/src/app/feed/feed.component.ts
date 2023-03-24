@@ -276,12 +276,12 @@ export class FeedComponent implements OnInit{
           console.log("post being sent to be created : " + post.content);
           this.service.createPost(post).subscribe((data: any) => {
             console.log("post Created: " + data);  
+            this.spotify_service.populatePlaylist(this.songArr, this.token, data3['id']).subscribe((data: any) => {
+              console.log(this.postContent);
+              location.reload();
+            })
           });
 
-          this.spotify_service.populatePlaylist(this.songArr, this.token, data3['id']).subscribe((data: any) => {
-            console.log(this.postContent);
-            location.reload();
-          })
         })
       })
     });

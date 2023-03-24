@@ -99,6 +99,20 @@
             </div>
             </div>
           </div>
+
+            <!--Playlist container-->
+            <div class="col-md-4">
+                <div class="push-down"></div>
+                <div class="card card-transparent">
+                  <h5 class="card-heading">Playlists</h5>
+                  <div class = "card">
+                    <table class="playlist" *ngFor="let p of playlist">
+                    <ul>{{p.name}}</ul>
+                    <ul>{{p.link}}</ul>
+                  </table>
+                  </div>
+                </div>
+              </div>
     
         <!--User Posts-->
         <div class="col-md-8">
@@ -116,23 +130,9 @@
     
         
       </div>
+      
     
-    
-      <div class="row2" style="margin-top: -44px; position:relative; bottom:100px">
-        <!--Playlist container-->
-        <div class="col-md-4">
-            <div class="push-down"></div>
-            <div class="card card-transparent">
-              <h5 class="card-heading">Playlists</h5>
-              <div class = "card">
-                <table class="playlist" *ngFor="let p of playlist">
-                <ul>{{p.name}}</ul>
-                <ul>{{p.link}}</ul>
-              </table>
-              </div>
-            </div>
-          </div>
-      </div>
+      
     </div> 
     </div>
     </section>

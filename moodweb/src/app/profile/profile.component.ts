@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit{
       this.getPlaylist(this.user?.user_Id);
       this.getFriends(this.user?.user_Id);
       this.getUserFeed(this.user?.user_Id);
+      this.getMood(this.user?.user_Id);
 
       this.m_service.getAllPlaylist(this.user?.user_Id).subscribe((data: any) =>{
         console.log(data);
@@ -132,7 +133,7 @@ export class ProfileComponent implements OnInit{
   }
 
   getMood(id : any) : any{
-    this.m_service.getMoods(this.id).subscribe((data: any) =>{
+    this.m_service.getMoods(id).subscribe((data: any) =>{
       console.log(data);
       for (var i = 0; i < data.length; i++){
         var dateStr = new Date(data[i]['date']);

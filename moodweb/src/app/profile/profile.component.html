@@ -62,7 +62,7 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <section ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="ng-scope container ng-fadeInLeftShort" style=""><!-- uiView:  --><div ui-view="" class="ng-fadeInLeftShort ng-scope">
-<div class="container-overlap bg-indigo-500 ng-scope">
+<div class="container bg-indigo-500 ng-scope">
 
 </div>
 <div class="container-lg ng-scope">
@@ -78,6 +78,16 @@
         </div>
         </div>
       </div>
+
+      <div class="col-md-8">
+        <h5 class="card-heading">Playlists</h5>
+        <div class = "card">
+          <table class="playlist" *ngFor="let p of playlist">
+          <ul>{{p.name}}</ul>
+          <ul>{{p.link}}</ul>
+        </table>
+        </div>
+    </div>
 
     <!--User Posts-->
     <div class="col-md-8">
@@ -100,16 +110,7 @@
 
 
   <div class="row2" style="margin-top: -44px; position:relative; top:200px">
-    <!--Playlist container-->
-    <div class="col-md-8">
-          <h5 class="card-heading">Playlists</h5>
-          <div class = "card">
-            <table class="playlist" *ngFor="let p of playlist">
-            <ul>{{p.name}}</ul>
-            <ul>{{p.link}}</ul>
-          </table>
-          </div>
-      </div>
+    
   </div>
 </div> 
 </div>

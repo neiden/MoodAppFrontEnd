@@ -9,4 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FooterComponent {
 
   constructor(private router:Router){}
+
+  Logout(){
+    this.router.navigateByUrl('');
+  }
+  
 }

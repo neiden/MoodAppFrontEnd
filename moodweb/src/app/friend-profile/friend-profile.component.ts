@@ -51,6 +51,7 @@ export class FriendProfileComponent implements OnInit{
       this.getPlaylist(this.user?.user_Id);
       this.getFriends(this.user?.user_Id);
       this.getUserFeed(this.user?.user_Id);
+      this.getMood(this.user?.user_Id);
 
       this.m_service.getAllPlaylist(this.user?.user_Id).subscribe((data: any) =>{
         console.log(data);
