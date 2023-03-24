@@ -28,7 +28,7 @@ export class FriendProfileComponent implements OnInit{
   playlists : any[] = [];
   user? : User = undefined;
   acc? : Account = undefined;
-  id : any;
+  uid : any;
   geo ? : MapGeocoderResponse = undefined;
   private routeSub?: Subscription;
   mood: string = "No Mood created yet for today...";
@@ -45,6 +45,7 @@ export class FriendProfileComponent implements OnInit{
       this.m_service.getAllUsers().subscribe((data) => {
       console.log(data); 
       this.user = data.find(u => u.user_Id === parseInt(params['fid']))
+      this.uid = parseInt(params['uid']);
       this.getAccountInfo(this.user?.user_Id);
       this.getPosts(this.user?.user_Id);
       this.getPlaylist(this.user?.user_Id);
@@ -77,7 +78,7 @@ export class FriendProfileComponent implements OnInit{
         //this gets location by zipcode
         
         this.location = this.getLoc(this.acc.zipcode); //call location api to get location 
-        this.id = this.acc.user_Id;
+        //this.id = this.acc.user_Id;
 
       }
     });
@@ -124,7 +125,7 @@ export class FriendProfileComponent implements OnInit{
   }
 
   getMood(id : any) : any{
-    this.m_service.getMoods(this.id).subscribe((data: any) =>{
+    this.m_service.getMoods(id).subscribe((data: any) =>{
       console.log(data);
       for (var i = 0; i < data.length; i++){
         var dateStr = new Date(data[i]['date']);
@@ -171,7 +172,7 @@ export class FriendProfileComponent implements OnInit{
           post.likes = data[i]['likes'];
           post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
           post.id = data[i]['postId'];
-          post.userId = this.id;
+          post.userId = id;
           this.postList.push(post);
         }
       })

@@ -1,9 +1,9 @@
 <nav aria-label="breadcrumb" class="main-breadcrumb" style="background: #5318FB;">
-  <ol class="breadcrumb" style="background: #5318FB; color:white">
-    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">Home</a></li>
-    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">User</a></li>
-    <li class="breadcrumb-item"><a href="https://kind-pebble-06d930310.2.azurestaticapps.net/{{u_Id}}">User Profile</a></li>
-  </ol>
+  <ol class="breadcrumb" style="background: #5318FB;">
+    <li class="breadcrumb-item" (click)="goHome(u_Id)">Home</li>
+    <li class="breadcrumb-item" (click) = "goProfile(u_Id)"> My Profile</li>
+    <li class="breadcrumb-item" (click) = "goSettings(u_Id)">Settings</li>
+  </ol> 
 </nav>
 <div class="container">
     <div class="row">

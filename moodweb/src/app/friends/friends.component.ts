@@ -32,6 +32,19 @@ export class FriendsComponent implements OnInit{
     this.router.navigate(['fprofile/', uid, fid])
   }
 
+  goHome(id : any){
+    this.router.navigate(['home', id]);
+  }
+
+  goProfile(id : any){
+    this.router.navigate(['profile', id]);
+  }
+  
+  goSettings(id : any){
+    this.router.navigate(['profilesettings', id]);
+  }
+
+
   //populate list of users on init
   //reflect contents of users in html
 
