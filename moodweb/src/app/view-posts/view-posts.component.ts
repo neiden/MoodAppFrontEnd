@@ -41,7 +41,8 @@ export class ViewPostsComponent implements OnInit{
       comment.name = data['f_Name'] + " " + data['l_Name'];
       this.service.createComment(comment).subscribe((data: any) => {
         console.log("comment was created!!!" ); 
-        location.reload();
+        //this.route.navigate(['/home/' , comment.u_id]);
+        //location.reload();
         
       })
     });
