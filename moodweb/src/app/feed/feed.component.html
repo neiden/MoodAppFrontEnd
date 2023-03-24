@@ -1,6 +1,13 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <section ui-view="" autoscroll="false" ng-class="app.viewAnimation" class="ng-scope container ng-fadeInLeftShort" style=""><!-- uiView:  --><div ui-view="" class="ng-fadeInLeftShort ng-scope">
 </div>
+<nav aria-label="breadcrumb" class="main-breadcrumb" style="background: #5318FB;">
+  <ol class="breadcrumb" style="background: #5318FB; color:white">
+    <li class="breadcrumb-item active" aria-current="page" style="color: white; ">Home</li>
+    <li class="breadcrumb-item"><a href="http://localhost:4200/profile/{{u_Id}}">User</a></li>
+    <li class="breadcrumb-item"><a href="http://localhost:4200/profilesettings/{{u_Id}}">User Profile</a></li>
+  </ol>
+</nav>
 <div class="container-lg ng-scope">
   <div class="row">
     <div class="col-md-8">
@@ -13,15 +20,26 @@
                   <textarea id="post" [formControl]="postContent" rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="form" placeholder="What's on your mind?"></textarea>
                   <div class="mda-form-control-line"></div>
                 </div>
-                <button (click)="createPost(u_Id)" class="mda-form-msg right">Post</button>
+                <button (click)="createPost()" class="mda-form-msg right">Post</button>
                 <button (click)="authenticate()" class="mda-form-msg right">Authenticate</button>
                 <button (click)="getGoogleScore()" class="mda-form-msg right">Generate Playlist</button>
               </div>
             </div>
           </form>
         </div>
+        <div class = "card">
+          <table class="playlist" *ngFor="let p of playlist">
+          <ul>{{p.name}}</ul>
+          <ul>{{p.link}}</ul>
+        </table>
+        </div>
+        <div class = "card">
+          <h2>{{mood}}</h2>
+      </div>
+        
         <div class="card-body">
         <app-view-posts *ngFor="let post of postList; index as i" [postData]="post"></app-view-posts>
+        
           <!-- Inner card-->
         </div>
         <!-- Add another post here!!-->

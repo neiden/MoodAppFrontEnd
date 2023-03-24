@@ -16,12 +16,12 @@ export class SpotifyApiService {
   scope : string = 'user-read-private user-read-email playlist-modify-public';
   clientId : string = '0c8985046bc0483ebc4b6192fffa648d';
   clientSecret: string = 'bc3019aa224d49dcad001b9fd074d886';
-  redirectURI : string = 'http://localhost:4200/home'
+  redirectURI : string = 'http://localhost:4200/home/'
 
 
 
-  authenticate() : void{
-    var url = "https://accounts.spotify.com/authorize/?scope=user-read-private%20user-read-email%20playlist-modify-public&client_id=0c8985046bc0483ebc4b6192fffa648d&redirect_uri=http://localhost:4200/home&response_type=token&show_dialog=true";
+  authenticate(u_Id: number) : void{
+    var url = `https://accounts.spotify.com/authorize/?scope=user-read-private%20user-read-email%20playlist-modify-public&client_id=0c8985046bc0483ebc4b6192fffa648d&redirect_uri=${this.redirectURI + u_Id}&response_type=token&show_dialog=true`;
     window.location.href = url;
   }
 
