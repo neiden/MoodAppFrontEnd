@@ -99,23 +99,23 @@ export class ProfileSettingComponent implements OnInit {
             if(this.form.controls[key] == this.form.controls['firstname']){
               newAcc.firstname = this.form.controls[key].value;
             }
-            else if(this.form.controls[key] == this.form.controls['lastname']){
+            else if(this.form.controls[key] === this.form.controls['lastname']){
               newAcc.lastname = this.form.controls[key].value;
             }
-            else if(this.form.controls[key] == this.form.controls['username']){
+            else if(this.form.controls[key] === this.form.controls['username']){
               newAcc.username = this.form.controls[key].value;
             }
-            else if(this.form.controls[key] == this.form.controls['email']){
+            else if(this.form.controls[key] === this.form.controls['email']){
               newAcc.username = this.form.controls[key].value;
             }
-            else if(this.form.controls[key] == this.form.controls['pwd']){
+            else if(this.form.controls[key] === this.form.controls['pwd']){
               newAcc.password = this.form.controls[key].value;
             } 
-            else if(this.form.controls[key] == this.form.controls['bdate']){
+            else if(this.form.controls[key] === this.form.controls['bdate']){
               let formattedDate  = formatDate(this.form.controls['bdate'].value, 'MM/dd/yyyy', 'en-US')
               newAcc.username = formattedDate;
             }
-            else if(this.form.controls[key] == this.form.controls['phonenum']){
+            else if(this.form.controls[key] === this.form.controls['phonenum']){
               newAcc.phoneNumber = this.form.controls[key].value;
             } 
             else {

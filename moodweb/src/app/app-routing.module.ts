@@ -44,11 +44,11 @@ const routes: Routes = [
     component: ProfileSettingComponent
   },
   {
-    path: 'friends',
+    path: 'friends/:id',
     component: FriendsComponent
   },
   {
-    path: 'fprofile/:id',
+    path: 'fprofile/:uid/:fid',
     component: FriendProfileComponent
   }
 

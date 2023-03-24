@@ -9,8 +9,8 @@
                             <div class="row d-flex align-items-center">
                                 <div class="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center">
                                     <ul>
-                                        <li>
-                                            <div class="counter">{{friendsNum}}</div>
+                                        <li (click)="goToFriends(acc?.user_Id)">
+                                            <div class="counter" (click)="goToFriends(acc?.user_Id)">{{friendsNum}}</div>
                                             <div class="heading">Friends</div>
                                         </li>
                                         <li>
@@ -87,65 +87,22 @@
             <div class="push-down"></div>
             <div class="card card-transparent">
               <h5 class="card-heading">Today's Mood</h5>
-              <div class="mda-list">
-                <div class="mda-list-item"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="List user" class="mda-list-item-img thumb48">
-                  <div class="mda-list-item-text mda-2-line">
-                    <h3><a href="#">Eric Graves</a></h3>
-                    <div class="text-muted text-ellipsis">Ut ac nisi id mauris</div>
-                  </div>
-                </div>
-                
-              </div>
+              <div class = "card">
+                <h2>{{mood}}</h2>
+            </div>
             </div>
           </div>
     
         <!--User Posts-->
         <div class="col-md-8">
           <div class="card">
-            <div class="card-body">
-    
-              <form action="" class="mt ng-pristine ng-valid">
-                <div class="input-group mda-input-group">
-                  <div class="mda-form-group">
-                    <div class="mda-form-control">
-                      <textarea rows="1" aria-multiline="true" tabindex="0" aria-invalid="false" class="no-resize form-control" style="width: 590px;"></textarea>
-                      <div class="mda-form-control-line"></div>
-                      <label class="m0">What's on your mind?</label>
-                    </div>
-                  </div>
-    
-                  <span class="input-group-btn">
-                    <button type="button" class="btn btn-success"  style="margin-top:0px; margin-left: 10px; background-color: #5318FB; border-color: #5318FB;">
-                        Post
-                    </button>
-                  </span>
-    
-                </div>
-              </form>
-    
-            </div>
             
-        
             <div class="card-body">
-              <!-- Inner card-->
-              <div class="card reader-block">
-                <div class="card-heading">
-                  <div class="media m0">
-                    <div class="media-left"><a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="User" class="media-object img-circle thumb48"></a></div>
-                    <div class="media-body media-middle pt-sm">
-                      <p class="media-heading m0 text-bold">Stephen Palmer</p><small class="text-muted"><em class="ion-earth text-muted mr-sm"></em><span>Yesterday</span></small>
-                    </div>
-                  </div>
-                  <div class="p">
-                    <div class="mb">Donec a purus auctor dui hendrerit accumsan non quis augue nisl sed iaculis.</div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button type="button" class="btn btn-flat btn-primary">Like</button>
-                  <button type="button" class="btn btn-flat btn-primary">Comment</button>
-                </div>
-              </div>
+              <app-view-posts *ngFor="let post of postList; index as i" [postData]="post"></app-view-posts>
+              
+                <!-- Inner card-->
             </div>
+        
           </div>
         </div>
     
@@ -160,14 +117,11 @@
             <div class="push-down"></div>
             <div class="card card-transparent">
               <h5 class="card-heading">Playlists</h5>
-              <div class="mda-list">
-                <div class="mda-list-item"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="List user" class="mda-list-item-img thumb48">
-                  <div class="mda-list-item-text mda-2-line">
-                    <h3><a href="#">Eric Graves</a></h3>
-                    <div class="text-muted text-ellipsis">Ut ac nisi id mauris</div>
-                  </div>
-                </div>
-                
+              <div class = "card">
+                <table class="playlist" *ngFor="let p of playlist">
+                <ul>{{p.name}}</ul>
+                <ul>{{p.link}}</ul>
+              </table>
               </div>
             </div>
           </div>

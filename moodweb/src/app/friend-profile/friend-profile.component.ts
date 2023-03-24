@@ -4,7 +4,8 @@ import { FormBuilder, FormControl, Validators, FormGroup, FormArray} from '@angu
 import { ActivatedRoute, Router } from '@angular/router';
 import { MoodAPIService } from '../mood-api.service';
 import { SpotifyApiService } from '../spotify-api.service';
-import { Account, User, Post } from 'src/models/account';
+import { Account, User, Post, Playlist, Mood } from 'src/models/account';
+import { formatDate } from '@angular/common';
 import { MapGeocoderResponse} from 'src/models/geocoder-response.model'
 
 @Component({
@@ -30,6 +31,9 @@ export class FriendProfileComponent implements OnInit{
   id : any;
   geo ? : MapGeocoderResponse = undefined;
   private routeSub?: Subscription;
+  mood: string = "No Mood created yet for today...";
+  playlist: Playlist[] = [];
+  postList: PostData[] = [];
 
   constructor(private router:Router, private m_service : MoodAPIService, private s_service : SpotifyApiService, private activatedRoute: ActivatedRoute){}
 
@@ -45,6 +49,19 @@ export class FriendProfileComponent implements OnInit{
       this.getPosts(this.user?.user_Id);
       this.getPlaylist(this.user?.user_Id);
       this.getFriends(this.user?.user_Id);
+      this.getUserFeed(this.user?.user_Id);
+
+      this.m_service.getAllPlaylist(this.user?.user_Id).subscribe((data: any) =>{
+        console.log(data);
+        for (var i = 0; i < data.length; i++){
+          var p = {} as Playlist;
+          p.link = data[i]['spotifyLink'];
+          p.name = data[i]['name'];
+          p.playlist_id = 0;
+          p.user_id = 0;
+          this.playlist.push(p);
+        }
+      });
       })
     })
   }
@@ -103,6 +120,24 @@ export class FriendProfileComponent implements OnInit{
     })
   }
 
+  getMood(id : any) : any{
+    this.m_service.getMoods(this.id).subscribe((data: any) =>{
+      console.log(data);
+      for (var i = 0; i < data.length; i++){
+        var dateStr = new Date(data[i]['date']);
+        var today = new Date();
+        console.log("Today:" + today);
+        console.log("Date being Compared:" + dateStr);
+
+        if(dateStr.getDate() === today.getDate()){
+          this.mood = "Today you're feeling... " + data[i]["category"] + " with a score of " + data[i]["score"] + "!!";
+          break;
+        }
+
+      }
+    });
+  }
+
   //when user clicks edit profile
   editProfile(id : any){
     console.log(id);
@@ -112,4 +147,42 @@ export class FriendProfileComponent implements OnInit{
   ngOnDestroy() {
     this.routeSub?.unsubscribe();
   }
+
+  goToFriends(id : any){
+    this.router.navigate(['/friends', id]);
+  }
+
+
+  getUserFeed(id : any){
+    //needs postList: PostData[] = [];
+    var uid = id;
+    this.m_service.getUser(uid).subscribe((data: any) => {
+      console.log(data);
+      var name = data['firstname'] + " " + data['lastname'];
+      this.m_service.getAllPosts(uid).subscribe((data: any) => {
+        for(var i = 0; i < data.length; i++){
+          var post = {} as PostData;
+          post.name = name;
+          post.content = data[i]['content'];
+          post.date = formatDate(new Date(data[i]['postDate']), 'MM/dd HH:mm', 'en');
+          post.likes = data[i]['likes'];
+          post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
+          post.id = data[i]['postId'];
+          post.userId = this.id;
+          this.postList.push(post);
+        }
+      })
+    })
+
+  }
+}
+
+export interface PostData{
+  name: string,
+  id: number,
+  imgSrc: string,
+  content: string,
+  date: string,
+  likes: number,
+  userId: number
 }
