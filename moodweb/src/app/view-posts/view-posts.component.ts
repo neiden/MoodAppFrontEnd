@@ -41,7 +41,7 @@ export class ViewPostsComponent implements OnInit{
       comment.name = data['f_Name'] + " " + data['l_Name'];
       this.service.createComment(comment).subscribe((data: any) => {
         console.log("comment was created!!!" ); 
-        this.route.navigate(['/home', this.postData.userId]);
+        location.reload();
         
       })
     });
@@ -50,10 +50,8 @@ export class ViewPostsComponent implements OnInit{
   getComments(){
       this.service.getComments(this.postData.id).subscribe((data : any) => {
         if(data != null){
-          console.log("All comments for post " + this.postData.id);
-          console.log(data)
           for (var i = 0; i < data.length; i++){
-            var com = {} as CommentData;
+            let com = {} as CommentData;
             com.commentDate = formatDate(new Date(data[i]['commentDate']), 'MM/dd HH:mm', 'en');
             com.commentId = data[i]['commentId'];
             com.postId = data[i]['postId'];
