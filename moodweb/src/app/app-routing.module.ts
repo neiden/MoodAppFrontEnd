@@ -7,6 +7,7 @@ import { FeedComponent } from './feed/feed.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { CommentComponent } from './comment/comment.component';
+import { FriendsComponent } from './friends/friends.component';
 const routes: Routes = [
   {
     path: 'login', 
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'profilesettings/:id',
     component: ProfileSettingComponent
+  },
+  {
+    path: 'friends/:id',
+    component: FriendsComponent
   }
 
 ];
