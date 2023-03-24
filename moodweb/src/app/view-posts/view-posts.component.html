@@ -13,9 +13,7 @@
 
 
 
-      <button type="button" class="btn btn-flat btn-primary">Like</button>  
-      <button type="button" class="btn btn-flat btn-primary">Comment</button>
-      <p>Likes: {{postData.likes}}</p>
+      <button type="button" class="btn btn-flat btn-primary">{{postData.likes}} Like this</button> 
     </div>
     <app-comment *ngFor="let comment of commentList" [commentData]="comment"></app-comment>
 

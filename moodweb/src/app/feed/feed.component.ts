@@ -83,6 +83,7 @@ export class FeedComponent implements OnInit{
 
 
     this.getUserFeed(this.u_Id);
+    this.getFeed();
   }
 
   goToProfile(){}
@@ -98,7 +99,7 @@ export class FeedComponent implements OnInit{
     post.userID = this.u_Id;
     this.service.createPost(post).subscribe((data: any) =>{
       console.log("this was created: " + data);
-      this.router.navigate(['/home', this.u_Id]);
+      location.reload();
     });
   }
 
@@ -135,7 +136,7 @@ export class FeedComponent implements OnInit{
       console.log(data)
       for (var i = 0; i < data.length; i++){
         var friend = {} as User;
-        var name = data[i]['f_Name'] + " " + data[i]['l_Name'];
+        let name = data[i]['f_Name'] + " " + data[i]['l_Name'];
         friend.birthdate = data[i]['birthdate'];
         friend.f_Name = data[i]['f_name'];
         friend.l_Name = data[i]['l_name'];
@@ -144,18 +145,20 @@ export class FeedComponent implements OnInit{
         friend.zipcode = data[i]['zipcode'];
         this.userList.push(friend);
 
-        this.service.getAllPosts(data[i]['user_Id']).subscribe((data: any) => {
-          for (var j = 0; j < data.length; j++){
-            var post = {} as PostData;
-            post.name = name;
-            post.content = data[j]['content'];
-            post.date = data[j]['postDate'];
-            post.likes = data[j]['likes'];
-            post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
-            post.id = data[j]['postId'];
-            post.userId = this.u_Id;
-            this.postList.push(post);
-           // console.log("This is a post by: " + name + data[j]['content']);
+        this.service.getAllPosts(friend.user_Id).subscribe((data2: any) => {
+          if(data2 != null){
+            for (var j = 0; j < data2.length; j++){
+              var post = {} as PostData;
+              post.name = name;
+              post.content = data2[j]['content'];
+              post.date = data2[j]['postDate'];
+              post.likes = data2[j]['likes'];
+              post.imgSrc = "https://bootdey.com/img/Content/avatar/avatar6.png";
+              post.id = data2[j]['postId'];
+              post.userId = friend.user_Id;
+              this.postList.push(post);
+              console.log("This is a post by: " + name + data2[j]['content']);
+            }
           }
         })
       }
@@ -266,7 +269,7 @@ export class FeedComponent implements OnInit{
 
           this.spotify_service.populatePlaylist(this.songArr, this.token, data3['id']).subscribe((data: any) => {
             console.log(this.postContent);
-            this.router.navigate(['/home', this.u_Id]);
+            location.reload();
           })
         })
       })

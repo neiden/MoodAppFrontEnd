@@ -10,7 +10,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 
 //export so other modules can import
-export class AppComponent {
+export class AppComponent implements OnInit{
   //class variables
   title = 'moodweb';
   

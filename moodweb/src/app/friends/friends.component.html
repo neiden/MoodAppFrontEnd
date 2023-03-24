@@ -1,21 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="people-nearby">
-              <div class="nearby-user">
+            <div class="people-nearby">              
+              <div class="nearby-user" *ngFor="let friend of friendsList">
+
                 <div class="row">
                   <div class="col-md-2 col-sm-2">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
                   </div>
                   <div class="col-md-7 col-sm-7">
-                    <h5><a href="#" class="profile-link">Cris Haris</a></h5>
-                    <p>General Manager at Manager</p>
+                    <h5><a href="#" class="profile-link">{{friend.f_Name}} {{friend.l_Name}}</a></h5>
+                    <p>My birthday is: {{friend.birthdate}}</p>
+                    <p class="text-muted">Zipcode: {{friend.zipcode}}</p>
                   </div>
                   <div class="col-md-3 col-sm-3">
-                    <button class="btn btn-primary pull-right" style = "background-color: #5318FB; border: #5318FB;" (click)="goFriendProfile(u_id,10)">View Friend</button>
+                    <button class="btn btn-primary pull-right" (click)="goFriendProfile(u_id,10)">View Profile</button>
                   </div>
                 </div>
-              </div>
+              </div> 
             </div>
     	</div>
 	</div>

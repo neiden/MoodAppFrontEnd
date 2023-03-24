@@ -10,7 +10,12 @@ import { FriendsComponent } from './friends/friends.component';
 import { FriendProfileComponent } from './friend-profile/friend-profile.component';
 import { CommentComponent } from './comment/comment.component'; 
 
+
 const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
   {
     path: 'login', 
     component: LoginComponent
@@ -50,7 +55,11 @@ const routes: Routes = [
   {
     path: 'fprofile/:uid/:fid',
     component: FriendProfileComponent
-  }
+  },
+  {
+    path: 'friends/:id',
+    component: FriendsComponent
+  },
 
 ];
 
